@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
 import Navbar from '../Shared/Navbar';
 import '../Shared/Navbar.css'
-import {} from 'react-icons/fa'
+import { } from 'react-icons/fa'
+import Result from './Result';
 
 const cropName = [
     { name: "potato" },
@@ -15,19 +16,21 @@ const thumbsContainer = {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 16
+    marginTop: 16,
+    // width: "600px"
 };
 
 const thumb = {
     display: 'inline-flex',
-    borderRadius: 2,
+    borderRadius: 10,
     border: '1px solid #eaeaea',
     marginBottom: 8,
     marginRight: 8,
-    width: 100,
-    height: 100,
+    width: "500px",
+    height: "500px",
     padding: 4,
     boxSizing: 'border-box'
+    
 };
 
 const thumbInner = {
@@ -38,7 +41,7 @@ const thumbInner = {
 
 const img = {
     display: 'block',
-    width: 'auto',
+    width: "600px",
     height: '100%'
 };
 
@@ -102,7 +105,7 @@ const Home = () => {
                         <section className="border border-red-500 py-5 rounded-lg">
                             <div  {...getRootProps({ className: 'dropzone' })}>
                                 <input {...getInputProps()} />
-                                <p>Drag 'n' drop some files here, or click to select files</p>
+                                <p className='font-bold text-xl'>Drag & Drop Image, or click to select files</p>
                             </div>
                             {/* <aside style={thumbsContainer}>
                                 {thumbs}
@@ -114,12 +117,19 @@ const Home = () => {
                             <img src={images} alt="nothing" />
                         } */}
                         <div>
-                            <aside style={thumbsContainer}>
+                            {/* <aside style={thumbsContainer}>
                                 {thumbs}
-                            </aside>
+                            </aside> */}
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="my-5">
+                <aside>
+                    {thumbs}
+                </aside>
+                <Result />
             </div>
 
         </div>
