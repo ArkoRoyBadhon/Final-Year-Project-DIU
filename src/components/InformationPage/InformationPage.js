@@ -9,24 +9,7 @@ const division = [
     { name: "Barishal" }
 ]
 
-const link = [
-    {
-        "category": "Birgonj",
-        "link": "http://birganj.dinajpur.gov.bd/"
-    },
-    {
-        "category": "Kaharol",
-        "link": "http://kaharol.dinajpur.gov.bd/"
-    },
-    {
-        "category": "Khanshama",
-        "link": "http://khansama.dinajpur.gov.bd/"
-    },
-    {
-        "category": "Parbatipur",
-        "link": "http://parbatipur.dinajpur.gov.bd/"
-    }
-]
+
 
 
 const InformationPage = () => {
@@ -54,7 +37,7 @@ const InformationPage = () => {
     }, [divisionName])
 
     useEffect(() => {
-        if (districtName !== null) {
+        if (districtName) {
             fetch(`https://finer-year-project-server.vercel.app/upazila/${districtName}`)
                 .then(res => res.json())
                 .then(data => setAllUpazila(data))
@@ -72,7 +55,7 @@ const InformationPage = () => {
     }, [districtName])
 
     useEffect(() => {
-        if (upazilaName !== null) {
+        if (upazilaName) {
             fetch(`https://finer-year-project-server.vercel.app/links/${upazilaName}`)
                 .then(res => res.json())
                 .then(data => setfetchLink(data))
