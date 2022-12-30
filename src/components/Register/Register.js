@@ -22,7 +22,8 @@ const Register = () => {
             phone,
             email,
             address,
-            password
+            password,
+            role:"normalUser"
         }
 
         console.log(saveinfo);
