@@ -66,7 +66,7 @@ const Register = () => {
 
     const saveUser = (saveinfo) => {
         console.log('inside saaveUser', saveinfo);
-        fetch(`http://localhost:5000/userinfo/userinfo`, {
+        fetch(`http://localhost:5000/userinfo/`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

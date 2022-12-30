@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa'
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext)
+    const [userInfo, setUserInfo] = useState({});
+    const [checker, setChecker] = useState(false);
+
+    const navigate = useNavigate();
+
     // setting mobile nav
     const [click, setClick] = useState(false)
     const handleClick = () => setClick(!click)
@@ -23,6 +30,29 @@ const Navbar = () => {
     // close nav color when scrollinh
     const closeMenu = () => setClick(false)
 
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/login')
+            })
+            .catch(err => console.error(err))
+    }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/userinfo/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setUserInfo(data[0])
+                // if (userInfo?.role === "admin") {
+                //     setChecker(true);
+                // }
+            })
+            .catch(err => console.log(err))
+
+
+    }, [user])
+
+    // console.log(userInfo[0].role);
 
     return (
         <div className={color ? 'header header-bg' : 'header'}>
@@ -46,17 +76,24 @@ const Navbar = () => {
                         <Link to='/about' onClick={closeMenu}>About</Link>
                     </li>
                     <li className='nav-item'>
-                        <a href='#contact-form' onClick={closeMenu}>Contact</a>
-                    </li>
-                    <li className='nav-item'>
                         <Link to='/shop' onClick={closeMenu}>Shop</Link>
                     </li>
-                    {/* <li className='nav-item border rounded-2xl'>
-                        <Link to='/register' onClick={closeMenu}>Register</Link>
-                    </li> */}
-                    <li className='nav-item border rounded-2xl'>
-                        <Link to='/login' onClick={closeMenu}>Login</Link>
-                    </li>
+                    {
+                        userInfo?.role === "admin" && <li className='nav-item'>
+                        {/* // checker && <li className='nav-item'> */}
+                            <Link to='/dashboard' onClick={closeMenu}>Dashboard</Link>
+                        </li>
+                    }
+                    {
+                        user?.uid ?
+                            <li onClick={handleLogOut} className='nav-item border rounded-2xl'>
+                                <Link to='/login' onClick={closeMenu}>Logout</Link>
+                            </li>
+                            :
+                            <li className='nav-item border rounded-2xl'>
+                                <Link to='/login' onClick={closeMenu}>Login</Link>
+                            </li>
+                    }
                 </ul>
             </nav>
         </div>
