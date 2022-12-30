@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 
 
-const AllBuyers = () => {
+const AllUsers = () => {
     const {user} = useContext(AuthContext)
     const [fetchUsers, setFetchUsers] = useState([]);
 
@@ -46,8 +46,8 @@ const AllBuyers = () => {
 
     console.log("aa");
     return (
-        <div className='min-h-screen'>
-            <div className="bg-base-200 px-10 rounded-2xl pb-10 max-w-screen-xl mx-auto min-h-screen py-10">
+        <div className=''>
+            <div className=" px-10 rounded-2xl pb-10 max-w-screen-xl mx-auto  py-10">
                 <h2 className='font-bold text-2xl text-red-600 pb-5'>All User List</h2>
                 <table className='table-sm md:table w-3/5 mx-auto mt-12'>
                     <thead>
@@ -84,4 +84,4 @@ const AllBuyers = () => {
     );
 };
 
-export default AllBuyers;
+export default AllUsers;

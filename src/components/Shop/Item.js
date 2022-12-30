@@ -1,15 +1,18 @@
 import React from 'react';
 
-const Item = () => {
+const Item = ({ item }) => {
+    const { name, photo, originalPrice, price, description, company, location, category } = item;
     return (
-        <div className="card bg-base-100 shadow-xl">
-            <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                    <button className="btn btn-primary">Buy Now</button>
-                </div>
+        <div className="bg-base-100 shadow-xl rounded-xl">
+            <figure><img className='w-full rounded-t-xl' src={photo} alt="Shoes" /></figure>
+            <div className="card-body h-[15rem]">
+                <h2 className="card-title">{name}</h2>
+                <h4 className=''>Price</h4>
+                <p>{description}</p>
+            </div>
+            <div className="flex justify-evenly">
+                <button className="btn btn-outline my-5">Buy Now</button>
+                <button className="btn my-5">More Info</button>
             </div>
         </div>
     );

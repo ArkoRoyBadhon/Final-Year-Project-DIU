@@ -1,15 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Categories = () => {
+const Categories = ({handleLink}) => {
+
+    const handleAdmin = () => {
+        alert("Comming Soon.....")
+    }
+
     return (
-        <div className='max-w-screen-lg py-10'>
+        <div className='max-w-screen-lg py-10 max-h-fit'>
             <h4 className="text-xl font-bold">Links</h4>
 
             <ul className="py-10">
-                <Link className="btn w-3/5 my-2">All Users</Link>
-                <Link className="btn w-3/5 my-2">Add Product</Link>
-                <Link className="btn w-3/5 my-2"></Link>
+                <Link onClick={handleLink} to='/dashboard' className="btn w-3/5 my-2">All Users</Link>
+                <Link onClick={handleLink} to="/dashboard/addProduct" className="btn w-3/5 my-2">Add Product</Link>
+                <Link onClick={handleAdmin} className="btn w-3/5 my-2">Make Admin</Link>
             </ul>
         </div>
     );

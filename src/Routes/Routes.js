@@ -1,4 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddProduct from "../components/DashBoard/AddProduct";
+import AllUsers from "../components/DashBoard/AllUsers";
+import AllBuyers from "../components/DashBoard/AllUsers";
 import DashBoard from "../components/DashBoard/DashBoard";
 import ErrorPage from "../components/ErrorPage/Errorpage";
 import Home from "../components/HomePage/Home";
@@ -38,7 +41,17 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <PrivateAdmin><DashBoard /></PrivateAdmin>
+                element: <PrivateAdmin><DashBoard /></PrivateAdmin>,
+                children: [
+                    {
+                        path: "/dashboard",
+                        element: <AllUsers />
+                    },
+                    {
+                        path: "/dashboard/addProduct",
+                        element: <AddProduct />
+                    }
+                ]
             },
             {
                 path: '*',
