@@ -51,8 +51,11 @@ const Navbar = () => {
                     <li className='nav-item'>
                         <Link to='/shop' onClick={closeMenu}>Shop</Link>
                     </li>
-                    <li className='nav-item border rounded-2xl'>
+                    {/* <li className='nav-item border rounded-2xl'>
                         <Link to='/register' onClick={closeMenu}>Register</Link>
+                    </li> */}
+                    <li className='nav-item border rounded-2xl'>
+                        <Link to='/login' onClick={closeMenu}>Login</Link>
                     </li>
                 </ul>
             </nav>

@@ -88,7 +88,7 @@ const Register = () => {
                 {/* <div className="text-center lg:text-left">
                     
                 </div> */}
-                <div className="w-[25rem] rounded-lg shadow-2xl bg-base-100">
+                <div className="w-[25rem] rounded-xl shadow-2xl bg-base-100">
                     <form onSubmit={handleSignUpForm} className="card-body">
                         <h2 className="text-2xl">Please Register</h2>
                         <div className="form-control">
