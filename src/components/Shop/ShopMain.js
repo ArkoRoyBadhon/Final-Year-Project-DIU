@@ -4,20 +4,41 @@ import Item from './Item';
 
 const ShopMain = () => {
     const [allItems, setAllItems] = useState([]);
+    const [mediBtn, setMediBtn] = useState(true);
+    const [machBtn, setMachBtn] = useState(false);
 
-    useEffect(()=>{
+    const handleLBtn = () => {
+        setMediBtn(true);
+        setMachBtn(false);
         fetch(`http://localhost:5000/items/Medicine`)
-        .then(res => res.json())
-        .then(data => setAllItems(data))
-    },[])
+            .then(res => res.json())
+            .then(data => setAllItems(data))
+    }
+    const handleRBtn = () => {
+        setMediBtn(false);
+        setMachBtn(true);
+        fetch(`http://localhost:5000/items/Machinaries`)
+            .then(res => res.json())
+            .then(data => setAllItems(data))
+    }
+
+    const activeClass = {
+        backgroundColor: "red"
+    }
+
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/items/Medicine`)
+            .then(res => res.json())
+            .then(data => setAllItems(data))
+    }, [])
 
     return (
         <div>
-            {/* <h2 className="text-xl">This is Shop</h2> */}
-            <div className="mt-10 flex justify-evenly w-1/5 mx-auto bg-pink-300 rounded-full ">
-                <Link className='text-xl font-bold hover:bg-red-500 p-5 rounded-l-full'>Medicine</Link>
-
-                <Link className='text-xl font-bold p-5 hover:bg-red-500 rounded-r-full'>Machineries</Link>
+            <div className="my-10">
+                {/* <Link onClick={handleLBtn} className={mediBtn && 'bg-red-600' }>Medicine</Link> */}
+                <Link onClick={handleLBtn} className={mediBtn ? 'bg-red-600 text-xl font-bold hover:bg-red-500 p-5 rounded-l-full' : 'bg-blue-300 text-xl font-bold hover:bg-red-500 p-5 rounded-l-full'}>Medicine</Link>
+                <Link onClick={handleRBtn} className={machBtn ? 'bg-red-600 text-xl font-bold hover:bg-red-500 p-5 rounded-r-full' : 'bg-blue-300 text-xl font-bold hover:bg-red-500 p-5 rounded-r-full'}>Machineries</Link>
             </div>
 
             <hr className="my-5 w-3/5 mx-auto" />
