@@ -81,16 +81,16 @@ const Home = () => {
 
 
     return (
-        <div>
+        <div className='h-[80rem]'>
             {/* <Navbar /> */}
 
-            <div className="hero h-[40rem] bg-base-200">
+            <div className="hero h-[40rem] bg-gradient-to-r from-blue-600 to-violet-500">
                 <div className="hero-content text-center">
                     <div className="max-w-md">
                         <h1 className="text-5xl text-red-400 font-bold">Check Your Crops with Crop Doctor</h1>
-                        <div className="border flex my-10 ml-28">
+                        <div className="flex my-10 ml-28">
                             <div className="dropdown dropdown-end">
-                                <input defaultValue={dropdownValue} type="text" className='input' placeholder='please enter a crop name' />
+                                <input defaultValue={dropdownValue} type="text" className='input input-primary' placeholder='please enter a crop name' />
                                 <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                     {
                                         cropName?.map(crop => <>
@@ -105,7 +105,7 @@ const Home = () => {
                         <section className="border border-red-500 py-5 rounded-lg">
                             <div  {...getRootProps({ className: 'dropzone' })}>
                                 <input {...getInputProps()} />
-                                <p className='font-bold text-xl'>Drag & Drop Image, or click to select files</p>
+                                <p className='font-bold text-xl text-white'>Drag & Drop Image, or click to select files</p>
                             </div>
                             {/* <aside style={thumbsContainer}>
                                 {thumbs}

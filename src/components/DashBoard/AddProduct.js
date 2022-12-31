@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../Context/AuthProvider';
+import toast from 'react-hot-toast';
 
 
 const AddProduct = () => {
@@ -51,11 +52,12 @@ const AddProduct = () => {
                         .then(data => {
                             navigate('/')
                         })
-                    alert('Successfully item added')
+                    toast.success('Successfully item added')
                     // toast.success('Item added Successfully!')
                     navigate('/')
                 }
             })
+            .catch(err => toast.error(err.message))
 
     }
 

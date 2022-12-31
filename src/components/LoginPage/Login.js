@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-// import loginImg from '../../assets/'
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -29,23 +29,24 @@ const Login = () => {
         LogIn(email, password)
             .then(result => {
                 const user = result.user
-                alert('Login Successfully!')
+                toast.success('Login Successfully!')
 
                 navigate('/');
 
             })
-            .catch(err => alert('Login Failed! Please try again or reset your password'))
+            // .catch(err => alert('Login Failed! Please try again or reset your password'))
+            .catch(err => toast.error(err.message))
     }
 
     const handleResetPassword = () => {
         if (forgotEmail) {
             passwordReseting(forgotEmail)
             .then(()=> {
-                alert('password reset link send to your mail')
+                toast.error('password reset link send to your mail')
             })
-            .catch(err => console.error(err))
+            .catch(err => toast.error(err.message))
         } else {
-            alert('Try to Login First')
+            toast.error('Try to Login First')
         }
     }
 
@@ -53,7 +54,8 @@ const Login = () => {
     // console.log(forgotEmail);
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div style={{backgroundImage: 
+        "url(/images/gom.jpg)"}} className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row">
                 {/* <div className="text-center lg:text-left">
                     

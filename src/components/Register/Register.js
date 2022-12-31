@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Register = () => {
 
@@ -26,12 +27,12 @@ const Register = () => {
             role:"normalUser"
         }
 
-        console.log(saveinfo);
+        // console.log(saveinfo);
 
         signUpWithEmail(email, password)
             .then(res => {
                 const user = res.user
-                alert('SignUp Successfully!')
+                toast.success('SignUp Successfully!')
                 const info = {
                     displayName: name,
                     phoneNumber: phone,
@@ -43,7 +44,7 @@ const Register = () => {
                         saveUser(saveinfo)
                         // alert('user saved')
                     })
-                    .catch(err => console.error(err))
+                    .catch(err => toast.error(err.message))
 
                 form.reset()
 
@@ -56,11 +57,11 @@ const Register = () => {
                     .then(() => {
                         navigate('/login')
                     })
-                    .catch(err => console.error(err))
+                    .catch(err => toast.error(err.message))
                 // navigate('/login')
             })
             .catch(err => {
-                console.error(err);
+                toast.error(err.message);
             })
     }
 
@@ -79,12 +80,13 @@ const Register = () => {
                 // console.log(data)
                 // setCreatedUserEmail(saveinfo.email);
             })
-            .catch(err => console.error(err.message))
+            .catch(err => toast.error(err.message))
     }
 
 
     return (
-        <div className="hero min-h-screen bg-base-200">
+        <div style={{backgroundImage: 
+            "url(/images/gom.jpg)"}} className="hero min-h-screen bg-base-200">
             <div className="hero-content">
                 {/* <div className="text-center lg:text-left">
                     

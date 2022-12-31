@@ -3,6 +3,7 @@ import { FaBars, FaTimes } from 'react-icons/fa'
 import './Navbar.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -33,9 +34,10 @@ const Navbar = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
+                toast.success("Logout Successfully!")
                 navigate('/login')
             })
-            .catch(err => console.error(err))
+            .catch(err => toast.error(err.message))
     }
 
     useEffect(() => {
@@ -47,7 +49,7 @@ const Navbar = () => {
                 //     setChecker(true);
                 // }
             })
-            .catch(err => console.log(err))
+            .catch(err => toast.error(err.message))
 
 
     }, [user])

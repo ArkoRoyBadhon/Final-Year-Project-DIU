@@ -65,9 +65,9 @@ const InformationPage = () => {
     // console.log('client', allDistrict);
 
     return (
-        <div className='mt-10'>
+        <div className='mt-10 text-center'>
             <div className="my-5">
-                <h2 className='text-xl font-bold text-red-400'>Select Your Area For More Details of Experts</h2>
+                <h2 className='text-xl font-bold text-red-600'>Select Your Area For More Details of Experts</h2>
             </div>
             <div className="w-3/5 lg:w-3/6 mx-auto grid lg:grid-cols-3 gap-5">
                 <div className="dropdown dropdown-end">
@@ -142,8 +142,12 @@ const InformationPage = () => {
             <hr className='max-w-screen-lg mx-auto mt-10' />
 
             {
-                (isActive) && <ExpertsDetails fetchLink={fetchLink[0].link} />
-                // (isActive) && console.log(fetchLink[0].link)
+                (isActive) ? <ExpertsDetails fetchLink={fetchLink[0].link} upazilaName={upazilaName} districtName={districtName} />
+                    // (isActive) && console.log(fetchLink[0].link)
+                    :
+                    <div className="h-[30rem] mt-10">
+                        <h2 className="text-black capitalize">Please search for an Area</h2>
+                    </div>
             }
 
         </div>

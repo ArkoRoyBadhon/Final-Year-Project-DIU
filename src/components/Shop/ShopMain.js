@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Item from './Item';
+import toast from 'react-hot-toast';
 
 const ShopMain = () => {
     const [allItems, setAllItems] = useState([]);
@@ -13,32 +14,31 @@ const ShopMain = () => {
         fetch(`http://localhost:5000/items/Medicine`)
             .then(res => res.json())
             .then(data => setAllItems(data))
-    }
-    const handleRBtn = () => {
-        setMediBtn(false);
-        setMachBtn(true);
-        fetch(`http://localhost:5000/items/Machinaries`)
+            .catch(err => toast.error(err.message))
+        }
+        const handleRBtn = () => {
+            setMediBtn(false);
+            setMachBtn(true);
+            fetch(`http://localhost:5000/items/Machinaries`)
             .then(res => res.json())
             .then(data => setAllItems(data))
-    }
-
-    const activeClass = {
-        backgroundColor: "red"
-    }
-
-
-    useEffect(() => {
-        fetch(`http://localhost:5000/items/Medicine`)
+            .catch(err => toast.error(err.message))
+        }
+        
+        
+        useEffect(() => {
+            fetch(`http://localhost:5000/items/Medicine`)
             .then(res => res.json())
             .then(data => setAllItems(data))
+            .catch(err => toast.error(err.message))
     }, [])
 
     return (
-        <div>
-            <div className="my-10">
+        <div className='min-h-screen bg-gradient-to-r from-indigo-400 to-cyan-400'>
+            <div className="my-10 text-center">
                 {/* <Link onClick={handleLBtn} className={mediBtn && 'bg-red-600' }>Medicine</Link> */}
-                <Link onClick={handleLBtn} className={mediBtn ? 'bg-red-600 text-xl font-bold hover:bg-red-500 p-5 rounded-l-full' : 'bg-blue-300 text-xl font-bold hover:bg-red-500 p-5 rounded-l-full'}>Medicine</Link>
-                <Link onClick={handleRBtn} className={machBtn ? 'bg-red-600 text-xl font-bold hover:bg-red-500 p-5 rounded-r-full' : 'bg-blue-300 text-xl font-bold hover:bg-red-500 p-5 rounded-r-full'}>Machineries</Link>
+                <Link onClick={handleLBtn} className={mediBtn ? 'bg-red-600 text-md font-bold hover:bg-red-500 p-5 rounded-l-full text-white' : 'bg-blue-300 text-xl font-bold hover:bg-red-500 p-5 rounded-l-full text-black'}>Medicine</Link>
+                <Link onClick={handleRBtn} className={machBtn ? 'bg-red-600 text-md font-bold hover:bg-red-500 p-5 rounded-r-full text-white' : 'bg-blue-300 text-xl font-bold hover:bg-red-500 p-5 rounded-r-full text-black'}>Machineries</Link>
             </div>
 
             <hr className="my-5 w-3/5 mx-auto" />

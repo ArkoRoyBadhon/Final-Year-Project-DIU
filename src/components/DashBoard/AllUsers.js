@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-
+import toast from 'react-hot-toast';
 
 const AllUsers = () => {
     const {user} = useContext(AuthContext)
@@ -13,7 +13,7 @@ const AllUsers = () => {
         fetch("http://localhost:5000/users")
             .then(res => res.json())
             .then(data => setFetchUsers(data))
-            .catch(err => console.error(err))
+            .catch(err => toast.error(err))
     }, [])
 
     const handleDeleteBuyer = async (id, email) => {
@@ -22,7 +22,7 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                alert('user deleted')
+                toast.success('user deleted')
                 // toast.success('User Deleted Successfully!')
                 // refetch()
                 if(data){
@@ -44,12 +44,12 @@ const AllUsers = () => {
     //     navigate('/dashboard')
     // }, [fetchUsers])
 
-    console.log("aa");
+    // console.log("aa");
     return (
         <div className=''>
-            <div className=" px-10 rounded-2xl pb-10 max-w-screen-xl mx-auto  py-10">
-                <h2 className='font-bold text-2xl text-red-600 pb-5'>All User List</h2>
-                <table className='table-sm md:table w-3/5 mx-auto mt-12'>
+            <div className=" px-10 rounded-2xl pb-10 max-w-screen-xl mx-auto  pt-10">
+                <h2 className='font-bold text-2xl text-red-600'>All User List</h2>
+                <table className='table-sm md:table w-3/5 mx-auto mt-6'>
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -69,7 +69,7 @@ const AllUsers = () => {
 
                                         {
                                             eachUser.role === "admin" ?
-                                                <button onClick={() =>alert('Admin cannot be deleted')} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
+                                                <button onClick={() =>toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
                                                 :
                                                 <button onClick={() => handleDeleteBuyer(eachUser._id, eachUser.email)} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
                                         }
