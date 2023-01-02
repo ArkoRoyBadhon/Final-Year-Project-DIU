@@ -75,17 +75,25 @@ const Navbar = () => {
                         <Link to='/information' onClick={closeMenu}>Information</Link>
                     </li>
                     <li className='nav-item'>
-                        <Link to='/about' onClick={closeMenu}>About</Link>
+                        <Link to='/blog' onClick={closeMenu}>Blog</Link>
                     </li>
                     <li className='nav-item'>
                         <Link to='/shop' onClick={closeMenu}>Shop</Link>
                     </li>
                     {
                         userInfo?.role === "admin" && <li className='nav-item'>
-                        {/* // checker && <li className='nav-item'> */}
+                            {/* // checker && <li className='nav-item'> */}
                             <Link to='/dashboard' onClick={closeMenu}>Dashboard</Link>
                         </li>
                     }
+
+                    {
+                        userInfo?.role === "normalUser" && <li className='nav-item'>
+                            {/* // checker && <li className='nav-item'> */}
+                            <Link to='/cart' onClick={closeMenu}>Cart</Link>
+                        </li>
+                    }
+
                     {
                         user?.uid ?
                             <li onClick={handleLogOut} className='nav-item border rounded-2xl'>
@@ -96,6 +104,7 @@ const Navbar = () => {
                                 <Link to='/login' onClick={closeMenu}>Login</Link>
                             </li>
                     }
+
                 </ul>
             </nav>
         </div>

@@ -1,8 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
+import AddEmployee from './AddEmployee';
 import AddProduct from './AddProduct';
 import AllUsers from './AllUsers';
 import Categories from './Categories';
+import MakeAdmin from './MakeAdmin';
+import ShowProduct from './ShowProduct';
+import ViewEmployee from './ViewEmployee';
 
 const DashBoard = ({ children }) => {
     const { user } = useContext(AuthContext)
@@ -25,15 +29,27 @@ const DashBoard = ({ children }) => {
             <h2 className='text-3xl font-bold text-center py-10 text-black'>Hello, {user.displayName}! Welcome to DashBoard</h2>
 
             <div className="grid grid-cols-6">
-                <div className="col-span-2 bg-red-300 rounded-xl">
+                <div className="col-span-2 bg-red-300 rounded-l-xl">
                     <Categories handleLink={handleLink} />
                 </div>
-                <div className="col-span-4 bg-base-200 rounded-xl">
+                <div className="col-span-4 bg-base-200 rounded-r-xl">
                     {
                         cLocation === "http://localhost:3000/dashboard" && <AllUsers />
                     }
                     {
                         cLocation === "http://localhost:3000/dashboard/addProduct" && <AddProduct />
+                    }
+                    {
+                        cLocation === "http://localhost:3000/dashboard/showproduct" && <ShowProduct />
+                    }
+                    {
+                        cLocation === "http://localhost:3000/dashboard/makeadmin" && <MakeAdmin />
+                    }
+                    {
+                        cLocation === "http://localhost:3000/dashboard/addemployee" && <AddEmployee />
+                    }
+                    {
+                        cLocation === "http://localhost:3000/dashboard/viewemployee" && <ViewEmployee />
                     }
                 </div>
             </div>

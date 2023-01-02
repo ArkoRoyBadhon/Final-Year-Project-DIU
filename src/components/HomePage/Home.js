@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
-import Navbar from '../Shared/Navbar';
 import '../Shared/Navbar.css'
-import { } from 'react-icons/fa'
+import { FaImage } from 'react-icons/fa'
 import Result from './Result';
+import { FaBeer } from 'react-icons/fa';
+
 
 const cropName = [
     { name: "potato" },
@@ -26,11 +27,11 @@ const thumb = {
     border: '1px solid #eaeaea',
     marginBottom: 8,
     marginRight: 8,
-    width: "500px",
-    height: "500px",
+    width: "350px",
+    height: "350px",
     padding: 4,
     boxSizing: 'border-box'
-    
+
 };
 
 const thumbInner = {
@@ -41,7 +42,7 @@ const thumbInner = {
 
 const img = {
     display: 'block',
-    width: "600px",
+    width: "400px",
     height: '100%'
 };
 
@@ -81,7 +82,7 @@ const Home = () => {
 
 
     return (
-        <div className='h-[80rem]'>
+        <div className='h-auto pb-10'>
             {/* <Navbar /> */}
 
             <div className="hero h-[40rem] bg-gradient-to-r from-blue-600 to-violet-500">
@@ -90,7 +91,7 @@ const Home = () => {
                         <h1 className="text-5xl text-red-400 font-bold">Check Your Crops with Crop Doctor</h1>
                         <div className="flex my-10 ml-28">
                             <div className="dropdown dropdown-end">
-                                <input defaultValue={dropdownValue} type="text" className='input input-primary' placeholder='please enter a crop name' />
+                                <input defaultValue={dropdownValue} type="text" className='input bg-slate-300 text-black' placeholder='please enter a crop name' />
                                 <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                     {
                                         cropName?.map(crop => <>
@@ -105,7 +106,8 @@ const Home = () => {
                         <section className="border border-red-500 py-5 rounded-lg">
                             <div  {...getRootProps({ className: 'dropzone' })}>
                                 <input {...getInputProps()} />
-                                <p className='font-bold text-xl text-white'>Drag & Drop Image, or click to select files</p>
+                                <div className='font-bold text-sm text-white flex flex-col items-center'>Drag & Drop Image, or click to select files
+                                    <FaImage className='text-5xl text-center mt-3' /></div>
                             </div>
                             {/* <aside style={thumbsContainer}>
                                 {thumbs}
@@ -125,7 +127,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="my-5">
+            <div className="my-5 text-center">
                 <aside>
                     {thumbs}
                 </aside>

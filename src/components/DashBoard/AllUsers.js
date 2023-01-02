@@ -4,8 +4,9 @@ import { AuthContext } from '../../Context/AuthProvider';
 import toast from 'react-hot-toast';
 
 const AllUsers = () => {
-    const {user} = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
     const [fetchUsers, setFetchUsers] = useState([]);
+    let count = 1;
 
     const navigate = useNavigate();
 
@@ -25,7 +26,7 @@ const AllUsers = () => {
                 toast.success('user deleted')
                 // toast.success('User Deleted Successfully!')
                 // refetch()
-                if(data){
+                if (data) {
                     window.location.reload();
                 }
             })
@@ -52,6 +53,8 @@ const AllUsers = () => {
                 <table className='table-sm md:table w-3/5 mx-auto mt-6'>
                     <thead>
                         <tr>
+                            <th>Index</th>
+                            <th>Photo</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
@@ -62,6 +65,10 @@ const AllUsers = () => {
                         {
                             fetchUsers?.map(eachUser =>
                                 <tr key={eachUser._id}>
+                                    <td>{count++}</td>
+                                    <td>
+                                        <img className='rounded-3xl w-20' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' alt="no img" />
+                                    </td>
                                     <td>{eachUser.name}</td>
                                     <td>{eachUser.email}</td>
                                     <td>{eachUser.role}</td>
@@ -69,7 +76,7 @@ const AllUsers = () => {
 
                                         {
                                             eachUser.role === "admin" ?
-                                                <button onClick={() =>toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
+                                                <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
                                                 :
                                                 <button onClick={() => handleDeleteBuyer(eachUser._id, eachUser.email)} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
                                         }
