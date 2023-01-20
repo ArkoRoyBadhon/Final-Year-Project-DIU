@@ -4,7 +4,7 @@ import AddEmployee from './AddEmployee';
 import AddProduct from './AddProduct';
 import AllUsers from './AllUsers';
 import Categories from './Categories';
-import MakeAdmin from './MakeAdmin';
+import ManageAdmin from './ManageAdmin';
 import ShowProduct from './ShowProduct';
 import ViewEmployee from './ViewEmployee';
 
@@ -26,7 +26,7 @@ const DashBoard = ({ children }) => {
 
     return (
         <div className='bg-green-100  py-10 px-4 rounded-xl'>
-            <h2 className='text-2xl font-semibold text-center pb-6 text-black'>Hello, {user.displayName}!<br/> Welcome to DashBoard</h2>
+            <h2 className='text-2xl font-medium text-center pb-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br/> Welcome to DashBoard</h2>
 
             <div className="grid grid-cols-10">
                 <div className="col-span-2 bg-red-300 rounded-l-xl">
@@ -43,7 +43,7 @@ const DashBoard = ({ children }) => {
                         cLocation === "http://localhost:3000/dashboard/showproduct" && <ShowProduct />
                     }
                     {
-                        cLocation === "http://localhost:3000/dashboard/makeadmin" && <MakeAdmin />
+                        cLocation === "http://localhost:3000/dashboard/manageadmin" && <ManageAdmin />
                     }
                     {
                         cLocation === "http://localhost:3000/dashboard/addemployee" && <AddEmployee />

@@ -73,13 +73,7 @@ const AllUsers = () => {
                                     <td>{eachUser.email}</td>
                                     <td>{eachUser.role}</td>
                                     <td>
-
-                                        {
-                                            eachUser.role === "admin" ?
-                                                <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
-                                                :
-                                                <button onClick={() => handleDeleteBuyer(eachUser._id, eachUser.email)} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
-                                        }
+                                        <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
                                     </td>
                                 </tr>
                             )

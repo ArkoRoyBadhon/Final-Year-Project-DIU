@@ -66,22 +66,20 @@ const AddEmployee = () => {
     return (
         <div className='h-auto'>
             <div className="px-10 rounded-2xl pb-10 max-w-screen-md mx-auto  py-10">
-                <h2 className='font-bold text-2xl text-red-600 pb-5'>Add New Employee</h2>
-                <form onSubmit={handleSubmit(handleAddProductForm)} className="card-body">
+                <h2 className='font-bold text-2xl text-slate-800 pb-5'>Add New Employee</h2>
+                <form onSubmit={handleSubmit(handleAddProductForm)} className="flex flex-col gap-4">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Employee Name</span>
                         </label>
-                        <input {...register("employeeName", { required: 'Product Name field is required' })} type="text" placeholder="Name" className="input input-bordered" />
+                        <input {...register("employeeName", { required: 'Employee Name field is required' })} type="text" placeholder="Name" className="input input-bordered  max-w-[900px]" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Photo</span>
                         </label>
-                        <input {...register("photo", { required: 'Product Photo field is required' })} type="file" className="file-input w-full max-w-xs" />
-                    </div>
-                    
-                   
+                        <input {...register("photo", { required: 'Employee Photo field is required' })} type="file" className="file-input w-full border-success  file-input-success  max-w-[900px]" />
+                    </div>                                
                     
                     {/* <div className="form-control">
                         <label className="label">
@@ -96,7 +94,7 @@ const AddEmployee = () => {
                         <label className="label">
                             <span className="label-text">Position</span>
                         </label>
-                        <select {...register("category", { required: 'Category field is required' })} className="select select-bordered w-full max-w-xs">
+                        <select {...register("category", { required: 'Position field is required' })} className="select select-bordered w-full  max-w-[900px] ">
                             <option defaultValue>Shop-Keeper</option>
                             <option>Visitor</option>
                             
@@ -106,19 +104,19 @@ const AddEmployee = () => {
                         <label className="label">
                             <span className="label-text">Location</span>
                         </label>
-                        <input {...register("location", { required: 'Company field is required' })} type="text" placeholder="company name" className="input input-bordered" />
+                        <input {...register("location", { required: 'Location field is required' })} type="text" placeholder="location name" className="input input-bordered  max-w-[900px]" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Phone</span>
                         </label>
-                        <input {...register("phone", { required: 'Description field is required' })} type="text" placeholder="phone" className="input input-bordered" />
+                        <input {...register("phone", { required: 'Phone field is required' })} type="text" placeholder="phone" className="input input-bordered  max-w-[900px]" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input {...register("email", { required: 'Original Price field is required' })} type="text" placeholder="email" className="input input-bordered" />
+                        <input {...register("email", { required: 'Email field is required' })} type="text" placeholder="email" className="input input-bordered  max-w-[900px]" />
                     </div>
                     {/* <div className="form-control">
                         <label className="label">
@@ -127,7 +125,7 @@ const AddEmployee = () => {
                         <input {...register("our_price", { required: 'This field is required' })} type="text" placeholder="our price" className="input input-bordered" />
                     </div> */}
 
-                    <input className='btn btn-accent w-full mt-4' value="Add Employee" type="submit" />
+                    <input className='btn w-full mt-4 bg-[#224229]  max-w-[900px]' value="Add Employee" type="submit" />
                 </form>
             </div>
 
