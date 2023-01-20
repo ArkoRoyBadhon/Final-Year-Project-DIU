@@ -48,9 +48,9 @@ const AllUsers = () => {
     // console.log("aa");
     return (
         <div className=''>
-            <div className=" px-10 rounded-2xl pb-10 max-w-screen-xl mx-auto  pt-10">
-                <h2 className='font-bold text-2xl text-red-600'>All User List</h2>
-                <table className='table-sm md:table w-3/5 mx-auto mt-6'>
+            <div className=" px-10 rounded-2xl  mx-auto  pt-10">
+                <h2 className='font-bold text-2xl text-slate-800'>All User List</h2>
+                <table className='table-sm md:table  mx-auto mt-6'>
                     <thead>
                         <tr>
                             <th>Index</th>
@@ -67,7 +67,7 @@ const AllUsers = () => {
                                 <tr key={eachUser._id}>
                                     <td>{count++}</td>
                                     <td>
-                                        <img className='rounded-3xl w-20' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' alt="no img" />
+                                        <img className='rounded-full w-14 h-14' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' alt="no img" />
                                     </td>
                                     <td>{eachUser.name}</td>
                                     <td>{eachUser.email}</td>
