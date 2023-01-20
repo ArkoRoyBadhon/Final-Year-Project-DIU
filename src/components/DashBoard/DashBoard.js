@@ -26,7 +26,7 @@ const DashBoard = ({ children }) => {
 
     return (
         <div className='bg-green-100  py-10 px-4 rounded-xl'>
-            <h2 className='text-2xl font-semibold text-center pb-6 text-green-900'>Hello, {user.displayName}!<br/> Welcome to DashBoard</h2>
+            <h2 className='text-2xl font-medium text-center pb-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br/> Welcome to DashBoard</h2>
 
             <div className="grid grid-cols-10">
                 <div className="col-span-2 bg-red-300 rounded-l-xl">

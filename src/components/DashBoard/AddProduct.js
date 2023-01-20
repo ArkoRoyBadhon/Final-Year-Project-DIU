@@ -65,7 +65,7 @@ const AddProduct = () => {
 
     return (
         <div className='h-auto'>
-            <div className="px-10 rounded-2xl pb-10  py-10 ">
+            <div className="px-10 rounded-2xl pb-10  py-10 max-w-screen-md mx-auto  ">
                 <h2 className='font-bold text-2xl text-slate-800 pb-5'>Add New Product</h2>
                 <form onSubmit={handleSubmit(handleAddProductForm)} className=" flex flex-col gap-4">
                     <div className="form-control">
