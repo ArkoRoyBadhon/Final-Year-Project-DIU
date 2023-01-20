@@ -29,10 +29,10 @@ const DashBoard = ({ children }) => {
             <h2 className='text-2xl font-medium text-center pb-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br/> Welcome to DashBoard</h2>
 
             <div className="grid grid-cols-10">
-                <div className="col-span-2 bg-red-300 rounded-l-xl">
+                <div className="col-span-2 bg-red-300 rounded-l-xl hidden lg:flex">
                     <Categories handleLink={handleLink} />
                 </div>
-                <div className="col-span-8  rounded-r-xl bg-green-200">
+                <div className="col-span-10 lg:col-span-8 pb-8 rounded-xl  lg:rounded-r-xl rounded-l-none bg-green-200">
                     {
                         cLocation === "http://localhost:3000/dashboard" && <AllUsers />
                     }
