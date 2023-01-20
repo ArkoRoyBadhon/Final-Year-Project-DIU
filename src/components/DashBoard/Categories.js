@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 const Categories = ({handleLink}) => {
 
@@ -9,7 +9,7 @@ const Categories = ({handleLink}) => {
     }
 
     return (
-        <div className='max-w-screen-lg py-10 max-h-fit text-center'>
+        <div className='max-w-screen-lg py-10 h-full text-center bg-green-400 '>
             {/* <h4 className="text-xl font-bold text-black"></h4> */}
 
             <ul className="py-5">

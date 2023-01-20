@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-import toast from 'react-hot-toast';
 
 const Register = () => {
 
@@ -68,7 +68,7 @@ const Register = () => {
 
     const saveUser = (saveinfo) => {
         console.log('inside saaveUser', saveinfo);
-        fetch(`http://localhost:5000/userinfo/`, {
+        fetch(`http://localhost:5005/userinfo/`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

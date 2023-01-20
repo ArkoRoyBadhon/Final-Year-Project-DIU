@@ -14,6 +14,7 @@ import ErrorPage from "../components/ErrorPage/Errorpage";
 import Home from "../components/HomePage/Home";
 import InformationPage from "../components/InformationPage/InformationPage";
 import Login from "../components/LoginPage/Login";
+import Predict from "../components/PredictPage/Predict";
 import Register from "../components/Register/Register";
 import PrivateAdmin from "../components/Shared/PrivateAdmin";
 import PrivatePage from "../components/Shared/PrivatePage";
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login />
+            },            
+            {
+                path: '/predict',
+                element: <Predict />
             },
             {
                 path: '/cart',

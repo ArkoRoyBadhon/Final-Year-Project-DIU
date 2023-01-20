@@ -5,7 +5,7 @@ const MakeAdmin = () => {
     const [allUsers, setAllUsers] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("http://localhost:5005/users")
             .then(res => res.json())
             .then(data => setAllUsers(data))
             // .catch(err => toast.error(err))

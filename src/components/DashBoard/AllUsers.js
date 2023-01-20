@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-import toast from 'react-hot-toast';
 
 const AllUsers = () => {
     const { user } = useContext(AuthContext)
@@ -11,14 +11,14 @@ const AllUsers = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5000/users")
+        fetch("http://localhost:5005/users")
             .then(res => res.json())
             .then(data => setFetchUsers(data))
             .catch(err => toast.error(err))
     }, [])
 
     const handleDeleteBuyer = async (id, email) => {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`http://localhost:5005/users/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

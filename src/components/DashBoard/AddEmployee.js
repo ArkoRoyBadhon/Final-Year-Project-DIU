@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../Context/AuthProvider';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
 
 
 const AddEmployee = () => {
@@ -40,7 +40,7 @@ const AddEmployee = () => {
                     }
                     // console.log(itemInfo);
 
-                    // fetch(`http://localhost:5000/addItem`, {
+                    // fetch(`http://localhost:5005/addItem`, {
                     //     method: 'POST',
                     //     headers: {
                     //         'content-type': 'application/json',

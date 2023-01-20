@@ -25,7 +25,7 @@ const DashBoard = ({ children }) => {
     }, [boolValue])
 
     return (
-        <div className=' max-w-screen-xl min-h-screen pt-10 rounded-xl mx-auto'>
+        <div className=' max-w-screen-xl min-h-screen pt-10 rounded-xl mx-auto mb-10 w-[98%]'>
             <h2 className='text-3xl font-bold text-center py-10 text-black'>Hello, {user.displayName}! Welcome to DashBoard</h2>
 
             <div className="grid grid-cols-6">

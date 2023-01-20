@@ -5,7 +5,8 @@ import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
-    <div className="bg-gradient-to-r from-indigo-400 to-cyan-400">
+    // <div className="bg-gradient-to-r from-indigo-400 to-cyan-400">
+    <div>
       <RouterProvider router={router}>
 
       </RouterProvider>
