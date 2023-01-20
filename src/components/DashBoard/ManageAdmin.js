@@ -1,14 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Context/AuthProvider';
+
 
 const ManageAdmin = () => {
+
     const [allUsers, setAllUsers] = useState([])
+    const { user } = useContext(AuthContext);
+    const [userInfo, setUserInfo] = useState(null);
+    const navigate = useNavigate()
+    // useEffect(() => {
+    //     fetch(`http://localhost:5005/userinfo/${user?.email}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data[0].role !== 'admin') {
+    //                 return navigate('/dashboard/myprofile')
+    //             }
+    //             // setUserInfo(data[0])
+    //         })
+    //         .catch(err => console.log(err.message))
+    // }, [user])
+    // console.log(userInfo);
 
     useEffect(() => {
         fetch("http://localhost:5005/users")
             .then(res => res.json())
             .then(data => setAllUsers(data))
-        // .catch(err => toast.error(err))
     }, [])
 
     return (

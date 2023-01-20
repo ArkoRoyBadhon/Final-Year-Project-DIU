@@ -57,13 +57,9 @@ const Navbar = () => {
         </li>
         {
             user?.uid && <li className='nav-item'>
-                {/* // checker && <li className='nav-item'> */}
                 <Link to='/dashboard' onClick={closeMenu}>Dashboard</Link>
             </li>
         }
-
-
-
         {
             user?.uid ?
                 <li onClick={handleLogOut} className='nav-item text-rose-500 rounded-2xl w-fit h-fit'>
@@ -77,13 +73,23 @@ const Navbar = () => {
     </>
     const iconList = <>
         <a className=""><BsSearch></BsSearch></a>
-        <a className=""><BsPerson></BsPerson></a>
-        <a className=""><BsBookmarkHeart></BsBookmarkHeart></a>
         {
-            userInfo?.role === "normalUser" && <span className='nav-item'>
-                {/* // checker && <li className='nav-item'> */}
-                <Link to='/cart' onClick={closeMenu}><BsCartPlus></BsCartPlus></Link>
-            </span>
+            user?.uid && <>
+                <a className=""><BsPerson></BsPerson></a>
+
+            </>
+        }
+        {
+            userInfo?.role === "normalUser" &&
+            <>
+                <span className='nav-link'>
+                    <Link to='/dashboard/bookedmarkitems' className="" onClick={closeMenu}><BsBookmarkHeart></BsBookmarkHeart></Link>
+                </span>
+
+                <span className='nav-item'>
+                    <Link to='/cart' onClick={closeMenu}><BsCartPlus></BsCartPlus></Link>
+                </span>
+            </>
         }
     </>
     useEffect(() => {
