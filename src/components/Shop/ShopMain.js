@@ -34,7 +34,7 @@ const ShopMain = () => {
     }, [])
 
     return (
-        <div className='pb-10'>
+        <div className='pb-10 bg-green-100'>
             <div className="my-10 text-center">
                 {/* <Link onClick={handleLBtn} className={mediBtn && 'bg-red-600' }>Medicine</Link> */}
                 <Link onClick={handleLBtn} className={mediBtn ? 'bg-[#224229] text-md font-bold hover:bg-[#224229] p-5 rounded-l-full text-white' : 'bg-slate-300 text-xl font-bold hover:bg-[#224229] p-5 rounded-l-full text-slate-600'}>Medicine</Link>

@@ -58,13 +58,13 @@ const InformationPage = () => {
     // console.log('client', allDistrict);
 
     return (
-        <div className='mt-10 text-center'>
+        <div className='py-14 text-center bg-green-100'>
             <div className="my-5">
                 <h2 className='text-xl font-normal text-red-600'>Select Your Area For More Details of Experts*</h2>
             </div>
-            <div className="w-3/5 lg:w-3/6 mx-auto grid lg:grid-cols-3 gap-5">
+            <div className="w-4/5 lg:w-4/6 mx-auto grid lg:grid-cols-3 gap-5">
                 <div className="dropdown dropdown-end">
-                    <input defaultValue={divisionName} type="text" className='input input-bordered' placeholder='Please select your Division' />
+                    <input defaultValue={divisionName} type="text" className='input input-bordered' placeholder='Select Division' />
                     <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                         {
                             division?.map(divi =>
@@ -77,7 +77,7 @@ const InformationPage = () => {
                 <div className="dropdown dropdown-end">
                     {
                         divisionName ? <>
-                            <input defaultValue={districtName} type="text" className='input input-bordered' placeholder='Please select your District' />
+                            <input defaultValue={districtName} type="text" className='input input-bordered' placeholder='Select District' />
                             <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                 {
                                     allDistrict?.map(divi =>
@@ -88,7 +88,7 @@ const InformationPage = () => {
                         </>
                             :
                             <>
-                                <input disabled defaultValue={districtName} type="text" className='input input-bordered' placeholder='Please select your District' />
+                                <input disabled defaultValue={districtName} type="text" className='input input-bordered' placeholder='Select District' />
                                 <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                     {
                                         allDistrict?.map(divi =>
@@ -103,7 +103,7 @@ const InformationPage = () => {
                 <div className="dropdown dropdown-end">
                     {
                         districtName ? <>
-                            <input defaultValue={upazilaName} type="text" className='input input-bordered' placeholder='Please select your Upazila' />
+                            <input defaultValue={upazilaName} type="text" className='input input-bordered' placeholder='Select Upazila' />
                             <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                 {
                                     allUpazila?.map(divi =>
@@ -114,7 +114,7 @@ const InformationPage = () => {
                         </>
                             :
                             <>
-                                <input disabled defaultValue={districtName} type="text" className='input input-bordered' placeholder='Please select your District' />
+                                <input disabled defaultValue={upazilaName} type="text" className='input input-bordered' placeholder='Select Upazilla' />
                                 <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                     {
                                         allUpazila?.map(divi =>
