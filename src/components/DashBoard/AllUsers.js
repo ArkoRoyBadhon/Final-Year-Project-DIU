@@ -48,38 +48,40 @@ const AllUsers = () => {
     // console.log("aa");
     return (
         <div className=''>
-            <div className=" px-10 rounded-2xl  mx-auto  pt-10">
+            <div className=" px-10 rounded-2xl  mx-auto  pt-10 ">
                 <h2 className='font-bold text-2xl text-slate-800'>All User List</h2>
-                <table className='table-sm md:table  mx-auto mt-6'>
-                    <thead>
-                        <tr>
-                            <th>Index</th>
-                            <th>Photo</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            fetchUsers?.map(eachUser =>
-                                <tr key={eachUser._id}>
-                                    <td>{count++}</td>
-                                    <td>
-                                        <img className='rounded-full w-14 h-14' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' alt="no img" />
-                                    </td>
-                                    <td>{eachUser.name}</td>
-                                    <td>{eachUser.email}</td>
-                                    <td>{eachUser.role}</td>
-                                    <td>
-                                        <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
-                                    </td>
-                                </tr>
-                            )
-                        }
-                    </tbody>
-                </table>
+                <div className="overflow-auto rounded-lg">
+                    <table className=' md:table  mx-auto mt-6  w-full'>
+                        <thead className=''>
+                            <tr>
+                                <th className=''></th>
+                                <th>Photo</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {
+                                fetchUsers?.map(eachUser =>
+                                    <tr key={eachUser._id}>
+                                        <td className='sticky l-0'>{count++}</td>
+                                        <td>
+                                            <img className='rounded-full w-14 h-14' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' alt="no img" />
+                                        </td>
+                                        <td>{eachUser.name}</td>
+                                        <td className=''>{eachUser.email}</td>
+                                        <td>{eachUser.role}</td>
+                                        <td>
+                                            <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
+                                        </td>
+                                    </tr>
+                                )
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     );
