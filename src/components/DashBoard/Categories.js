@@ -14,7 +14,7 @@ const Categories = ({handleLink}) => {
                 <Link onClick={handleLink} to='/dashboard' className="btn hover:text-white bg-green-300 text-[#224229] w-3/5 my-2">All Users</Link>
                 <Link onClick={handleLink} to="/dashboard/addProduct" className="btn hover:text-white bg-green-300 text-[#224229] w-3/5 my-2">Add Product</Link>
                 <Link onClick={handleLink} to="/dashboard/showproduct" className="btn hover:text-white bg-green-300 text-[#224229] w-3/5 my-2">Show Product</Link>
-                <Link onClick={handleLink} to="/dashboard/makeadmin" className="btn hover:text-white bg-green-300 text-[#224229] w-3/5 my-2">Make Admin</Link>
+                <Link onClick={handleLink} to="/dashboard/manageadmin" className="btn hover:text-white bg-green-300 text-[#224229] w-3/5 my-2">Manage Admin</Link>
                 <Link onClick={handleLink} to="/dashboard/addemployee" className="btn hover:text-white bg-green-300 text-[#224229] w-3/5 my-2">Add Employee</Link>
                 <Link onClick={handleLink} to="/dashboard/viewemployee" className="btn hover:text-white bg-green-300 text-[#224229] w-3/5 my-2">View Employee</Link>
             </ul>

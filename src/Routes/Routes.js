@@ -7,7 +7,7 @@ import AddProduct from "../components/DashBoard/AddProduct";
 import AllUsers from "../components/DashBoard/AllUsers";
 import AllBuyers from "../components/DashBoard/AllUsers";
 import DashBoard from "../components/DashBoard/DashBoard";
-import MakeAdmin from "../components/DashBoard/MakeAdmin";
+import ManageAdmin from "../components/DashBoard/ManageAdmin";
 import ShowProduct from "../components/DashBoard/ShowProduct";
 import ViewEmployee from "../components/DashBoard/ViewEmployee";
 import ErrorPage from "../components/ErrorPage/Errorpage";
@@ -84,8 +84,8 @@ const router = createBrowserRouter([
                     //     element: <MakeAdmin />
                     // },
                     {
-                        path: "/dashboard/makeadmin",
-                        element: <MakeAdmin />
+                        path: "/dashboard/manageadmin",
+                        element: <ManageAdmin/>
                     },
                     {
                         path: "/dashboard/addemployee",
