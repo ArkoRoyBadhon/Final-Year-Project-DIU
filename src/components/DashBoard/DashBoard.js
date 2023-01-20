@@ -25,14 +25,14 @@ const DashBoard = ({ children }) => {
     }, [boolValue])
 
     return (
-        <div className=' max-w-screen-xl min-h-screen pt-10 rounded-xl mx-auto mb-10 w-[98%]'>
-            <h2 className='text-3xl font-bold text-center py-10 text-black'>Hello, {user.displayName}! Welcome to DashBoard</h2>
+        <div className='bg-green-100  py-10 px-4 rounded-xl'>
+            <h2 className='text-2xl font-semibold text-center pb-6 text-black'>Hello, {user.displayName}!<br/> Welcome to DashBoard</h2>
 
-            <div className="grid grid-cols-6">
+            <div className="grid grid-cols-10">
                 <div className="col-span-2 bg-red-300 rounded-l-xl">
                     <Categories handleLink={handleLink} />
                 </div>
-                <div className="col-span-4 bg-base-200 rounded-r-xl">
+                <div className="col-span-8  rounded-r-xl bg-green-200">
                     {
                         cLocation === "http://localhost:3000/dashboard" && <AllUsers />
                     }
