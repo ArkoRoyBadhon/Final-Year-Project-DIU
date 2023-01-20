@@ -2,7 +2,7 @@ import React from 'react';
 
 const Blog = () => {
     return (
-        <div className='screen-h-fit py-10'>
+        <div className='screen-h-fit py-10 bg-green-100'>
             <div className="max-w-screen-lg mx-auto">
                 <div className="card bg-base-200 my-10 p-10">
                     <h4 className="text-xl font-bold my-5">123 Bighar farmer Billal's success story</h4>

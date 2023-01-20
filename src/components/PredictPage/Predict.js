@@ -121,7 +121,7 @@ const Predict = () => {
     }
 
     return (
-        <div className='pb-10'>
+        <div className='pb-10 bg-green-100'>
             <div className=" ">
                 <div className=" text-center">
                     <div className="">

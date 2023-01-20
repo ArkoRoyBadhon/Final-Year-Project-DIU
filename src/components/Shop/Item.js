@@ -3,8 +3,8 @@ import React from 'react';
 const Item = ({ item }) => {
     const { name, photo, originalPrice, price, description, company, location, category } = item;
     return (
-        <div className="bg-base-100 shadow-xl rounded-xl">
-            <figure className='flex justify-center '><img className='h-[20rem] rounded-t-xl w-[95%] mx-auto' src={photo} alt="Shoes" /></figure>
+        <div className="bg-base-100 shadow-2xl rounded-xl">
+            <figure className='flex justify-center '><img className='h-[20rem] rounded-xl w-[95%] mx-auto pt-2' src={photo} alt="Shoes" /></figure>
             <div className="card-body h-[20rem]">
                 <h2 className="card-title">{name}</h2>
                 <small className="text-[0.8rem] ">Company: {company}</small>
