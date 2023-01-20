@@ -4,10 +4,13 @@ import Blog from "../components/Blog/Blog";
 import Cart from "../components/Cart/Cart";
 import AddEmployee from "../components/DashBoard/AddEmployee";
 import AddProduct from "../components/DashBoard/AddProduct";
+import AllOrders from "../components/DashBoard/AllOrders";
 import AllUsers from "../components/DashBoard/AllUsers";
-import AllBuyers from "../components/DashBoard/AllUsers";
+import BookedmarkItems from "../components/DashBoard/BookedmarkItems";
 import DashBoard from "../components/DashBoard/DashBoard";
 import ManageAdmin from "../components/DashBoard/ManageAdmin";
+import MyOrders from "../components/DashBoard/MyOrders";
+import MyProfile from "../components/DashBoard/MyProfile";
 import ShowProduct from "../components/DashBoard/ShowProduct";
 import ViewEmployee from "../components/DashBoard/ViewEmployee";
 import ErrorPage from "../components/ErrorPage/Errorpage";
@@ -65,14 +68,14 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <PrivateAdmin><DashBoard /></PrivateAdmin>,
+                element: <PrivatePage><DashBoard /></PrivatePage>,
                 children: [
                     {
-                        path: "/dashboard/makeadmin",
+                        path: "/dashboard/allusers",
                         element: <AllUsers />
                     },
                     {
-                        path: "/dashboard/addProduct",
+                        path: "/dashboard/addproduct",
                         element: <AddProduct />
                     },
                     {
@@ -92,9 +95,25 @@ const router = createBrowserRouter([
                         element: <AddEmployee />
                     },
                     {
+                        path: "/dashboard/bookedmarkitems",
+                        element: <BookedmarkItems />
+                    },
+                    {
                         path: "/dashboard/viewemployee",
                         element: <ViewEmployee />
-                    }
+                    },
+                    {
+                        path: "/dashboard/myprofile",
+                        element: <MyProfile />
+                    },
+                    {
+                        path: "/dashboard/myorders",
+                        element: <MyOrders />
+                    },
+                    {
+                        path: "/dashboard/allorders",
+                        element: <AllOrders />
+                    },
                 ]
             },
             {

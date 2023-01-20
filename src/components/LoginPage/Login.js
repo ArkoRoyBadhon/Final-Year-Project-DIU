@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -67,22 +67,22 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name='email' placeholder="email" className="input input-bordered" />
+                            <input required type="email" name='email' placeholder="email" className="input input-bordered" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="password" className="input input-bordered" />
+                            <input required type="password" name='password' placeholder="password" className="input input-bordered" />
                             <label className="label">
                                 <Link onClick={handleResetPassword} className="label-text-alt link link-hover">Forgot password?</Link>
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-primary border-0  bg-[#224229]">Login</button>
                         </div>
                         <label className="label">
-                            <Link to='/register' className="label-text-alt link link-hover">New to website? Please register!</Link>
+                            <Link to='/register' className="label-text-alt link link-hover underline">New to website? Please register!</Link>
                         </label>
                     </form>
                 </div>

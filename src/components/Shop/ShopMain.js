@@ -37,8 +37,8 @@ const ShopMain = () => {
         <div className='pb-10 bg-green-100'>
             <div className="my-10 text-center">
                 {/* <Link onClick={handleLBtn} className={mediBtn && 'bg-red-600' }>Medicine</Link> */}
-                <Link onClick={handleLBtn} className={mediBtn ? 'bg-[#224229] text-md font-bold hover:bg-[#224229] p-5 rounded-l-full text-white' : 'bg-slate-300 text-xl font-bold hover:bg-[#224229] p-5 rounded-l-full text-slate-600'}>Medicine</Link>
-                <Link onClick={handleRBtn} className={machBtn ? 'bg-[#224229] text-md font-bold hover:bg-[#224229] p-5 rounded-r-full text-white' : 'bg-slate-300 text-xl font-bold hover:bg-[#224229] p-5 rounded-r-full text-slate-600'}>Machineries</Link>
+                <Link onClick={handleLBtn} className={mediBtn ? 'bg-[#224229] text-md font-bold hover:bg-[#224229] hover:text-white p-5 rounded-l-full text-white' : 'bg-slate-300 text-xl font-bold hover:bg-[#224229] p-5 rounded-l-full text-slate-600 hover:text-white'}>Medicine</Link>
+                <Link onClick={handleRBtn} className={machBtn ? 'bg-[#224229] text-md font-bold hover:bg-[#224229] p-5 rounded-r-full text-white hover:text-white' : 'bg-slate-300 text-xl font-bold hover:bg-[#224229] p-5 rounded-r-full text-slate-600 hover:text-white'}>Machineries</Link>
             </div>
             
             <div className="w-[97%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
