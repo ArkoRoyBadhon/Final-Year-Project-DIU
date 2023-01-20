@@ -13,13 +13,13 @@ const ShowProduct = () => {
 
     return (
         <div>
-            <div className=" px-10 rounded-2xl pb-10 max-w-screen-xl mx-auto  pt-10">
-                <h2 className='font-bold text-2xl text-red-600'>All Items List</h2>
-                <table className='table-sm md:table w-3/5 mx-auto mt-6'>
+            <div className=" px-10 rounded-2xl pb-10  pt-10">
+                <h2 className='font-bold text-2xl text-slate-800'>All Items List</h2>
+                <table className='table w-full mt-6'>
                     <thead>
                         <tr>
-                            <td>Index</td>
-                            <td>Photo</td>
+                            <th>Index</th>
+                            <th>Photo</th>
                             <th>Name</th>
                             {/* <th>Email</th>
                             <th>Role</th> */}
@@ -28,11 +28,11 @@ const ShowProduct = () => {
                     </thead>
                     <tbody>
                         {
-                            allitems?.map((item,index) =>
+                            allitems?.map((item, index) =>
                                 <tr key={item._id}>
-                                    <td>{index+1}</td>
+                                    <td>{index + 1}</td>
                                     <td>
-                                        <img className='rounded-lg' src={item.photo} alt="" />
+                                        <img className='rounded-lg h-20 w-20' src={item.photo} alt="" />
                                     </td>
                                     <td>{item.name}</td>
                                     {/* <td>{item.email}</td>
@@ -41,13 +41,11 @@ const ShowProduct = () => {
 
                                         {
                                             // item.role === "admin" 
-                                            <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
+                                            <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm m-0 ">Delete</button>
                                             // :
                                             // <button onClick={() => handleDeleteBuyer(eachUser._id, eachUser.email)} className="btn btn-error btn-sm p-0 m-0 md:btn-md">Delete</button>
                                         }
-                                    </td>
-                                    <td>
-                                        <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-primary btn-sm p-0 m-0 md:btn-md">Edit</button>
+                                        <button onClick={() => toast.error('Admin cannot be edit')} className="btn btn-primary btn-sm  m-0  ml-2">Edit</button>
                                     </td>
                                 </tr>
                             )
