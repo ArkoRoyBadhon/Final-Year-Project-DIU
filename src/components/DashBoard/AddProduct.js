@@ -65,20 +65,20 @@ const AddProduct = () => {
 
     return (
         <div className='h-auto'>
-            <div className="px-10 rounded-2xl pb-10 max-w-screen-md mx-auto  py-10">
-                <h2 className='font-bold text-2xl text-red-600 pb-5'>Add New Product</h2>
-                <form onSubmit={handleSubmit(handleAddProductForm)} className="card-body">
+            <div className="px-10 rounded-2xl pb-10  py-10 ">
+                <h2 className='font-bold text-2xl text-slate-800 pb-5'>Add New Product</h2>
+                <form onSubmit={handleSubmit(handleAddProductForm)} className=" flex flex-col gap-4">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Product Name</span>
                         </label>
-                        <input {...register("productName", { required: 'Product Name field is required' })} type="text" placeholder="Name" className="input input-bordered" />
+                        <input {...register("productName", { required: 'Product Name field is required' })} type="text" placeholder="Name" className="input input-bordered max-w-[900px]" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Product Photo</span>
                         </label>
-                        <input {...register("photo", { required: 'Product Photo field is required' })} type="file" className="file-input w-full max-w-xs" />
+                        <input {...register("photo", { required: 'Product Photo field is required' })} type="file" className="file-input border-success  file-input-success max-w-[900px]" />
                     </div>
                     
                    
@@ -87,7 +87,7 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Location</span>
                         </label>
-                        <select {...register("location", { required: 'Location field is required' })} className="select select-bordered w-full max-w-xs">
+                        <select {...register("location", { required: 'Location field is required' })} className="select select-bordered max-w-[900px]">
                             <option defaultValue>All Shops</option>
                             
                         </select>
@@ -96,7 +96,7 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Category</span>
                         </label>
-                        <select {...register("category", { required: 'Category field is required' })} className="select select-bordered w-full max-w-xs">
+                        <select {...register("category", { required: 'Category field is required' })} className="select select-bordered max-w-[900px]">
                             <option defaultValue>Medicine</option>
                             <option>Machinaries</option>
                             
@@ -106,34 +106,34 @@ const AddProduct = () => {
                         <label className="label">
                             <span className="label-text">Company Name</span>
                         </label>
-                        <input {...register("product_company", { required: 'Company field is required' })} type="text" placeholder="company name" className="input input-bordered" />
+                        <input {...register("product_company", { required: 'Company field is required' })} type="text" placeholder="company name" className="input input-bordered max-w-[900px]" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Disease</span>
                         </label>
-                        <input {...register("disease", { required: 'Disease field is required' })} type="text" placeholder="disease name" className="input input-bordered" />
+                        <input {...register("disease", { required: 'Disease field is required' })} type="text" placeholder="disease name" className="input input-bordered max-w-[900px]" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Description</span>
                         </label>
-                        <input {...register("description", { required: 'Description field is required' })} type="text" placeholder="description" className="input input-bordered" />
+                        <textarea {...register("description", { required: 'Description field is required' })}  placeholder="description" className="input input-bordered max-w-[900px] min-h-[100px] py-2" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Original Market Price</span>
                         </label>
-                        <input {...register("original_price", { required: 'Original Price field is required' })} type="text" placeholder="original price" className="input input-bordered" />
+                        <input {...register("original_price", { required: 'Original Price field is required' })} type="text" placeholder="original price" className="input input-bordered max-w-[900px]" />
                     </div>
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Our Price</span>
                         </label>
-                        <input {...register("our_price", { required: 'This field is required' })} type="text" placeholder="our price" className="input input-bordered" />
+                        <input {...register("our_price", { required: 'This field is required' })} type="text" placeholder="our price" className="input input-bordered max-w-[900px]" />
                     </div>
 
-                    <input className='btn btn-accent w-full mt-4' value="Add Item" type="submit" />
+                    <input className='btn bg-[#224229] w-full  max-w-[900px] mt-4' value="Add Item" type="submit" />
                 </form>
             </div>
 
