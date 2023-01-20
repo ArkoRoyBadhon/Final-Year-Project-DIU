@@ -7,7 +7,8 @@ const Footer = () => {
             <div>
                 {/* <span className="footer-title">About Us</span> */}
                 <a className="link link-hover">Hydra Agro Limited</a>
-                <a className="link link-hover">Dhaka, Bangladesh</a>
+                <a className="link link-hover">Dhaka-1211, Bangladesh</a>
+                <a className='link link-hover'>+8801724322401</a>
                 {/* <a className="link link-hover">Marketing</a> */}
                 {/* <a className="link link-hover">Advertisement</a> */}
             </div>
