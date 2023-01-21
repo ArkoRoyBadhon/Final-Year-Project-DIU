@@ -66,8 +66,8 @@ const Categories = ({ handleLink }) => {
                 <Link onClick={handleLink} to="/dashboard/myprofile" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">My Profile</Link>
         }
         {
-            activeURL === '' ? <Link onClick={handleLink} to='/dashboard' className="btn hover:text-white  text-green-100 w-4/5 my-2 bg-[#224229]">All Users</Link> :
-                <Link onClick={handleLink} to='/dashboard' className="btn hover:text-white  text-green-100 w-4/5 my-2 bg-[#224229]">All Users</Link>
+            activeURL === 'allusers' ? <Link onClick={handleLink} to='/dashboard/allusers' className="btn hover:text-white  text-green-200 w-4/5 my-2 bg-[#224229]">All Users</Link> :
+                <Link onClick={handleLink} to='/dashboard/allusers' className="btn hover:text-white  bg-green-200 w-4/5 my-2 text-[#224229]">All Users</Link>
         }
         {
             activeURL === 'manageadmin' ? <Link onClick={handleLink} to="/dashboard/manageadmin" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">Manage Admin</Link> :

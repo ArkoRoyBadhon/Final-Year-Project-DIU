@@ -8,6 +8,7 @@ import AllOrders from "../components/DashBoard/AllOrders";
 import AllUsers from "../components/DashBoard/AllUsers";
 import BookedmarkItems from "../components/DashBoard/BookedmarkItems";
 import DashBoard from "../components/DashBoard/DashBoard";
+import EditProduct from "../components/DashBoard/EditProduct";
 import ManageAdmin from "../components/DashBoard/ManageAdmin";
 import MyOrders from "../components/DashBoard/MyOrders";
 import MyProfile from "../components/DashBoard/MyProfile";
@@ -19,7 +20,6 @@ import InformationPage from "../components/InformationPage/InformationPage";
 import Login from "../components/LoginPage/Login";
 import Predict from "../components/PredictPage/Predict";
 import Register from "../components/Register/Register";
-import PrivateAdmin from "../components/Shared/PrivateAdmin";
 import PrivatePage from "../components/Shared/PrivatePage";
 import ShopMain from "../components/Shop/ShopMain";
 import ViewProduct from "../components/ViewProduct/ViewProduct";
@@ -122,6 +122,10 @@ const router = createBrowserRouter([
                     {
                         path: "/dashboard/allorders",
                         element: <AllOrders />
+                    },
+                    {
+                        path: "/dashboard/editproduct/:id",
+                        element: <EditProduct />
                     },
                 ]
             },

@@ -1,12 +1,64 @@
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { BsFillBookmarkHeartFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 const Item = ({ item, handleBookedMark }) => {
     const { name, photo, originalPrice, price, description, company, location, category, productId, bookedMark } = item;
-    console.log(item);
+    // console.log(item);
     const { user, logOut } = useContext(AuthContext);
 
+    const addToCart = () => {
+
+        let add = false;
+        const preData = JSON.parse(localStorage.getItem('cropdoctor-cart'))
+        console.log(preData)
+        if (preData === null) {
+            const proId = []
+            proId.push(productId)
+            const newData = {
+                email: user?.email,
+                productsId: proId
+            }
+            localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
+            toast.success('Added Successfully!')
+        }
+        else {
+            if (preData.email === user?.email) {
+                let found = 0;
+                preData.productsId.map(id => {
+                    if (id == productId) {
+                        found = 1
+                    }
+                })
+                if (found == 1) {
+                    add = false
+                    toast.error('Already added!')
+
+                }
+                else {
+                    const productsId = [...preData?.productsId, productId]
+                    const newData = {
+                        email: user?.email,
+                        productsId: productsId
+                    }
+                    localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
+                    add = true
+                    toast.success('Added Successfully!')
+                }
+
+            }
+            else {
+                const productsId = [productId]
+                const newData = {
+                    email: user?.email,
+                    productsId: productsId
+                }
+                localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
+                add = true
+            }
+        }
+    }
 
 
     return (
@@ -27,7 +79,7 @@ const Item = ({ item, handleBookedMark }) => {
             </div>
             <div className="flex justify-evenly flex-wrap gap-6">
                 {
-                    user?.uid ? <button className="w-[140px] btn border-0  bg-[#224229] text-white">Buy Now</button> :
+                    user?.uid ? <button onClick={() => addToCart()} className="w-[140px] btn border-0  bg-[#224229] text-white">Add to cart</button> :
                         <Link to='/login' className="w-[140px] btn border-0  bg-[#224229] text-white">Login for Buy</Link>
                 }
                 <Link to={`viewproduct/${item?.productId}`} className="w-[140px] btn  bg-blue-800 border-0">More Info</Link>

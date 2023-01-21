@@ -8,6 +8,7 @@ import AllOrders from './AllOrders';
 import AllUsers from './AllUsers';
 import BookedmarkItems from './BookedmarkItems';
 import Categories from './Categories';
+import EditProduct from './EditProduct';
 import ManageAdmin from './ManageAdmin';
 import MyOrders from './MyOrders';
 import MyProfile from './MyProfile';
@@ -55,7 +56,7 @@ const DashBoard = ({ children }) => {
                         setPass(true)
                     }
                 }
-                else if (url == 'showproduct' || url == 'addproduct' || url == 'allorders') {
+                else if (url == 'showproduct' || url == 'addproduct' || url == 'allorders' || url == 'editproduct') {
                     console.log(data[0].role);
                     if (data[0].role === 'normalUser') {
                         setPass(false)
@@ -120,6 +121,9 @@ const DashBoard = ({ children }) => {
                             }
                             {
                                 url === "viewproduct" && <ViewProduct />
+                            }
+                            {
+                                url === "editproduct" && <EditProduct />
                             }
                         </>
                     }
