@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import Loader from '../Shared/Loader';
 
@@ -11,11 +12,18 @@ const Cart = () => {
     const [localData, setLocalData] = useState(null);
     const [cartItems, setCartItems] = useState(null);
     const [totalPrice, setTotalPrice] = useState(null);
-    const [reFetch, setRefetch] = useState(false)
-
+    const [reFetch, setRefetch] = useState(false);
+    const [wait, setWait] = useState(true)
+    const navigate = useNavigate()
     useEffect(() => {
         const data = JSON.parse(localStorage.getItem('cropdoctor-cart'))
-        setLocalData(data)
+        if (data == null) {
+            setLocalData([])
+        }
+        else {
+            setLocalData(data)
+        }
+        setWait(false)
     }, [reFetch])
 
     const increaseQuantity = (productId) => {
@@ -64,7 +72,7 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        if (localData?.email === user?.email && localData !== null) {
+        if (localData?.email === user?.email && localData !== null && localData.email !== undefined) {
             const idList = localData.productsId;
             fetch(`http://localhost:5005/getcartitems`, {
                 method: 'POST',
@@ -106,11 +114,41 @@ const Cart = () => {
         setRefetch(!reFetch)
     }
 
+    const handleOrder = () => {
+        console.log(cartItems, totalPrice)
+        const orderData = {
+            cartItems, totalPrice, orderPersonEmail: user?.email, orderDate: new Date()
+        }
+        fetch(`http://localhost:5005/placeorder`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(orderData)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedCount > 0) {
+                    toast.success('Order Place Successfully!');
+                    localStorage.removeItem("cropdoctor-cart");
+                    setRefetch(!reFetch)
+                    return navigate('/dashboard/myorders')
+                }
+                else {
+                    toast.error('Something Error!')
+                }
+            })
+    }
+
     return (
         <div className='bg-green-200 pb-10'>
             <div className="w-[96%] card rounded-lg mx-auto  mt-10  grid grid-cols-1  ">
                 {
-                    cartItems == null && <Loader></Loader>
+                    cartItems == null && wait === true && <Loader></Loader>
+                }
+                {
+                    localData && localData.length === 0 && <h2 className='text-2xl py-28 font-bold text-rose-500 text-center '>No Products Selected</h2>
                 }
                 {
                     cartItems && <>
@@ -120,7 +158,7 @@ const Cart = () => {
                                     <div className="col-span-1  bg-green-200  p-10 text-black rounded mb-7">
                                         <div className="flex justify-between w-full">
                                             <h2 className="text-xl font-bold">Shopping Cart</h2>
-                                            <h4 className="text-lg">{cartItems.length} Items</h4>
+                                            <h4 className="text-lg text-red-500">{cartItems.length} Items</h4>
                                         </div>
                                         <div className="overflow-auto">
                                             <table className='table w-full mx-auto mt-6 text-black'>
@@ -171,7 +209,7 @@ const Cart = () => {
                                                     <p className="">Total Price: <span className='text-lg font-semibold text-rose-500'>{
                                                         totalPrice
                                                     }Tk</span></p>
-                                                    <button className='btn mt-5 bg-[#224229] text-white w-full max-w-[300px] mx-auto'>Order to Buy</button>
+                                                    <button onClick={() => handleOrder()} className='btn mt-5 bg-[#224229] text-white w-full max-w-[300px] mx-auto'>Order to Buy</button>
                                                 </div>
                                             </div>
                                         </div>

@@ -70,7 +70,7 @@ const Item = ({ item, handleBookedMark }) => {
                 <h4 className=" ">Company: {company}</h4>
                 <h4 className=''>Price: <span className='text-green-700 font-semibold'>{price} Tk</span></h4>
                 <p className="">Market Price: <del className='text-red-400'>{originalPrice} Tk</del></p>
-                <p className="">Avalibale: {location}</p>
+                <p className="">Avalibale: <span className='text-blue-700'>{location}</span></p>
                 <p>Details: {description.slice(0, 80)} ...</p>
                 {
                     bookedMark && bookedMark === true ? <p className='flex gap-2 items-center'>BookedMark: <BsFillBookmarkHeartFill className='text-lg cursor-pointer text-red-500' onClick={() => handleBookedMark(item)} /></p> :

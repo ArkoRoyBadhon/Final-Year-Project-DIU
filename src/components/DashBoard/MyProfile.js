@@ -14,7 +14,7 @@ const MyProfile = () => {
             })
             .catch(err => console.log(err.message))
     }, [user])
-    console.log(user)
+ 
     return (
         <div className='h-auto'>
             <div className='px-10 rounded-2xl pb-10  py-10 max-w-screen-md mx-auto  '>

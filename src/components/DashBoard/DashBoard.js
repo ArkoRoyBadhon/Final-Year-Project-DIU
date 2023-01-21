@@ -25,13 +25,13 @@ const DashBoard = ({ children }) => {
     const [pass, setPass] = useState(false)
     const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate()
+
     useEffect(() => {
         setUrl(path.pathname.split('/')[2])
         fetch(`http://localhost:5005/userinfo/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data[0])
-                console.log(url, pass)
                 if (url === 'myprofile') {
                     setPass(true)
                 }
@@ -57,7 +57,6 @@ const DashBoard = ({ children }) => {
                     }
                 }
                 else if (url == 'showproduct' || url == 'addproduct' || url == 'allorders' || url == 'editproduct') {
-                    console.log(data[0].role);
                     if (data[0].role === 'normalUser') {
                         setPass(false)
                         return navigate('/dashboard/myprofile')
