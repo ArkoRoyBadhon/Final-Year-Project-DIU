@@ -6,6 +6,8 @@ import Loader from '../Shared/Loader';
 
 
 const ShowProduct = () => {
+    
+    console.log('showProduct');
     const [allitems, setAllItems] = useState(null)
     const { user, logOut } = useContext(AuthContext);
 

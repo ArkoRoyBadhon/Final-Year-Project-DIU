@@ -117,6 +117,7 @@ const Cart = () => {
     const handleOrder = () => {
         console.log(cartItems, totalPrice)
         const orderData = {
+            payment: false,
             cartItems, totalPrice, orderPersonEmail: user?.email, orderDate: new Date()
         }
         fetch(`http://localhost:5005/placeorder`, {
