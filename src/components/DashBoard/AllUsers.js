@@ -18,24 +18,20 @@ const AllUsers = () => {
             .catch(err => toast.error(err))
     }, [])
 
-    const handleDeleteBuyer = async (id, email) => {
-        fetch(`http://localhost:5005/users/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('user deleted')
-                // toast.success('User Deleted Successfully!')
-                // refetch()
-                if (data) {
-                    window.location.reload();
-                }
-            })
+    // const handleDelete = async (id) => {
+    //     fetch(`http://localhost:5005/deleteuser/${id}`, {
+    //         method: 'DELETE'
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             toast.success('user deleted')
+                
+    //         })
 
-        // deleteUserFromFirebase(email)
-        //     .then(() => alert('user delete from firebase'))
+    //     // deleteUserFromFirebase(email)
+    //     //     .then(() => alert('user delete from firebase'))
 
-    }
+    // }
 
 
     // if (isLoading) {
@@ -53,7 +49,7 @@ const AllUsers = () => {
             <div className=" px-10 rounded-2xl  mx-auto  pt-10 ">
                 <h2 className='font-bold text-2xl text-slate-800'>All User List</h2>
                 <div className="overflow-auto rounded-lg">
-                    <table className=' md:table  mx-auto mt-6  w-full'>
+                    <table className='table  mx-auto mt-6  w-full'>
                         <thead className=''>
                             <tr>
                                 <th className=''></th>
@@ -86,7 +82,10 @@ const AllUsers = () => {
                                             eachUser.role == 'normalUser' && <td className='text-slate-700'>{eachUser.role}</td>
                                         }
                                         <td>
-                                            <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
+                                            {
+                                                eachUser?.email === user?.email ? <h2>Own account</h2>
+                                                    : <button onClick={() => toast.success('No functionality done yet!')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
+                                            }
                                         </td>
                                     </tr>
                                 )
