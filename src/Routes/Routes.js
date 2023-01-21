@@ -8,6 +8,7 @@ import AllOrders from "../components/DashBoard/AllOrders";
 import AllUsers from "../components/DashBoard/AllUsers";
 import BookedmarkItems from "../components/DashBoard/BookedmarkItems";
 import DashBoard from "../components/DashBoard/DashBoard";
+import EditEmployee from "../components/DashBoard/EditEmployee";
 import EditProduct from "../components/DashBoard/EditProduct";
 import ManageAdmin from "../components/DashBoard/ManageAdmin";
 import MyOrders from "../components/DashBoard/MyOrders";
@@ -131,6 +132,10 @@ const router = createBrowserRouter([
                     {
                         path: "/dashboard/myproductorders",
                         element: <MyProductOrders />
+                    },
+                    {
+                        path: "/dashboard/editemployee/:id",
+                        element: <EditEmployee />
                     }
                 ]
             },

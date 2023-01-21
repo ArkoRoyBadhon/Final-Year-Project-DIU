@@ -8,6 +8,7 @@ import AllOrders from './AllOrders';
 import AllUsers from './AllUsers';
 import BookedmarkItems from './BookedmarkItems';
 import Categories from './Categories';
+import EditEmployee from './EditEmployee';
 import EditProduct from './EditProduct';
 import ManageAdmin from './ManageAdmin';
 import MyOrders from './MyOrders';
@@ -29,7 +30,7 @@ const DashBoard = ({ children }) => {
     const [pass, setPass] = useState(false)
     const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate()
-    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders']
+    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders','editemployee']
     const sellerLi = ['showproduct', 'addproduct', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders']
     const normalUserLi = ['bookedmarkitems', 'myorders', 'myprofile', 'viewproduct']
     const [reFetch, setRefetch] = useState(false);
@@ -136,7 +137,7 @@ const DashBoard = ({ children }) => {
     }
 
     return (
-        <div className='bg-green-100  py-10 px-4 rounded-xl'>
+        <div className='bg-green-100  py-10 px-4 '>
             <h2 className='text-2xl font-medium text-center pb-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br /> Welcome to DashBoard</h2>
 
             <div className="grid grid-cols-10">
@@ -187,6 +188,9 @@ const DashBoard = ({ children }) => {
                             }
                             {
                                 url === 'myproductorders' && <MyProductOrders />
+                            }
+                            {
+                                url === 'editemployee' && <EditEmployee />
                             }
                         </>
                     }
