@@ -31,7 +31,7 @@ const ManageAdmin = () => {
 
     return (
         <div>
-            <div className=" px-10 rounded-2xl pb-10 max-w-screen-xl mx-auto  pt-10">
+            <div className=" px-10 rounded-2xl pb-10  mx-auto  pt-10">
                 <h2 className='font-bold text-2xl text-slate-800'>All Users List(Manage Admin)</h2>
                 <div className="overflow-auto">
                     <table className='table mx-auto mt-6'>
