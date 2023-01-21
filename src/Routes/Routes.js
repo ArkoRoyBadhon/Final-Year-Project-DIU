@@ -8,8 +8,10 @@ import AllOrders from "../components/DashBoard/AllOrders";
 import AllUsers from "../components/DashBoard/AllUsers";
 import BookedmarkItems from "../components/DashBoard/BookedmarkItems";
 import DashBoard from "../components/DashBoard/DashBoard";
+import EditProduct from "../components/DashBoard/EditProduct";
 import ManageAdmin from "../components/DashBoard/ManageAdmin";
 import MyOrders from "../components/DashBoard/MyOrders";
+import MyProductOrders from "../components/DashBoard/MyProductOrders";
 import MyProfile from "../components/DashBoard/MyProfile";
 import ShowProduct from "../components/DashBoard/ShowProduct";
 import ViewEmployee from "../components/DashBoard/ViewEmployee";
@@ -19,9 +21,9 @@ import InformationPage from "../components/InformationPage/InformationPage";
 import Login from "../components/LoginPage/Login";
 import Predict from "../components/PredictPage/Predict";
 import Register from "../components/Register/Register";
-import PrivateAdmin from "../components/Shared/PrivateAdmin";
 import PrivatePage from "../components/Shared/PrivatePage";
 import ShopMain from "../components/Shop/ShopMain";
+import ViewProduct from "../components/ViewProduct/ViewProduct";
 import Main from "../layouts/MainLayout/Main";
 
 
@@ -40,11 +42,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <AboutPage /> 
+                element: <AboutPage />
             },
             {
                 path: '/blog',
-                element: <Blog /> 
+                element: <Blog />
             },
             {
                 path: '/shop',
@@ -57,7 +59,7 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login />
-            },            
+            },
             {
                 path: '/predict',
                 element: <Predict />
@@ -67,12 +69,20 @@ const router = createBrowserRouter([
                 element: <Cart />
             },
             {
+                path: 'shop/viewproduct/:id',
+                element: <ViewProduct />
+            },
+            {
                 path: '/dashboard',
                 element: <PrivatePage><DashBoard /></PrivatePage>,
                 children: [
                     {
                         path: "/dashboard/allusers",
                         element: <AllUsers />
+                    },
+                    {
+                        path: "/dashboard/viewproduct/:id",
+                        element: <ViewProduct />
                     },
                     {
                         path: "/dashboard/addproduct",
@@ -88,7 +98,7 @@ const router = createBrowserRouter([
                     // },
                     {
                         path: "/dashboard/manageadmin",
-                        element: <ManageAdmin/>
+                        element: <ManageAdmin />
                     },
                     {
                         path: "/dashboard/addemployee",
@@ -114,6 +124,14 @@ const router = createBrowserRouter([
                         path: "/dashboard/allorders",
                         element: <AllOrders />
                     },
+                    {
+                        path: "/dashboard/editproduct/:id",
+                        element: <EditProduct />
+                    },
+                    {
+                        path: "/dashboard/myproductorders",
+                        element: <MyProductOrders />
+                    }
                 ]
             },
             {

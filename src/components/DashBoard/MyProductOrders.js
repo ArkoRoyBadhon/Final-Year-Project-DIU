@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import Loader from '../Shared/Loader';
 
-const MyOrders = () => {
+const MyProductOrders = () => {
 
     const { user } = useContext(AuthContext)
     const [fetchUsers, setFetchUsers] = useState(null);
@@ -13,7 +13,7 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5005/myorders?email=${user?.email}`)
+        fetch(`http://localhost:5005/allorders?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setFetchUsers(data))
             .catch(err => toast.error(err))
@@ -40,15 +40,15 @@ const MyOrders = () => {
     console.log(fetchUsers)
     return (
         <div className=''>
-            <div className=" px-10 rounded-2xl  mx-auto  pt-10 ">
-                <h2 className='font-bold text-2xl text-slate-800'>My Orders List</h2>
+            <div className=" px-10 rounded-2xl   pt-10 ">
+                <h2 className='font-bold text-2xl text-slate-800'>All Orders List</h2>
                 {
                     fetchUsers === null && <Loader />
                 }
                 {
                     fetchUsers && <>
                         {
-                            fetchUsers.length == 0 ? <h2 className='text-lg font-bold text-red-500 mt-10'>No Products Order.</h2>
+                            fetchUsers.length == 0 ? <h2 className='text-lg font-bold text-red-500 mt-10'>No Order.</h2>
                                 :
                                 <div className="overflow-auto rounded-lg">
                                     <table className=' md:table  mx-auto mt-6  w-full'>
@@ -60,7 +60,8 @@ const MyOrders = () => {
                                                 <th>Quantity</th>
                                                 <th>Price</th>
                                                 <th>Total Price</th>
-                                                <th>Author Email</th>
+                                                <th>Seller Email</th>
+                                                <th>Buyer Email</th>
                                                 <th>Payment</th>
                                                 <th>Action</th>
                                             </tr>
@@ -75,12 +76,12 @@ const MyOrders = () => {
                                                         </td>
                                                         <td>{eachUser.productInfo.name}</td>
                                                         <td>{eachUser?.orderInfo?.quantity}</td>
-                                                        <td>{eachUser?.orderInfo?.price}</td>
-                                                        <td>{eachUser?.orderInfo?.tPrice}</td>
+                                                        <td>{eachUser?.orderInfo?.price}Tk</td>
+                                                        <td>{eachUser?.orderInfo?.tPrice}Tk</td>
                                                         <td className=''>{eachUser.productInfo.authorEmail}</td>
-                                                        <td>{eachUser?.orderInfo?.payment ? <span className='text-green-500'>Paid</span> : <span className='text-red-500'>Not paid</span> }</td>
+                                                        <td className=''>{eachUser.orderInfo.orderPersonEmail}</td>
+                                                        <td>{eachUser?.orderInfo?.payment ? <span className='text-green-500'>Paid</span> : <span className='text-red-500'>Not paid</span>}</td>
                                                         <td>
-                                                            <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-success mr-2 btn-sm p-2 m-0 ">Pay</button>
                                                             <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-2 m-0 ">Cancel</button>
                                                         </td>
                                                     </tr>
@@ -97,4 +98,4 @@ const MyOrders = () => {
     );
 };
 
-export default MyOrders;
+export default MyProductOrders;
