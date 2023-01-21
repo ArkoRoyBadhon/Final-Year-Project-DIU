@@ -11,6 +11,7 @@ import DashBoard from "../components/DashBoard/DashBoard";
 import EditProduct from "../components/DashBoard/EditProduct";
 import ManageAdmin from "../components/DashBoard/ManageAdmin";
 import MyOrders from "../components/DashBoard/MyOrders";
+import MyProductOrders from "../components/DashBoard/MyProductOrders";
 import MyProfile from "../components/DashBoard/MyProfile";
 import ShowProduct from "../components/DashBoard/ShowProduct";
 import ViewEmployee from "../components/DashBoard/ViewEmployee";
@@ -41,11 +42,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/about',
-                element: <AboutPage /> 
+                element: <AboutPage />
             },
             {
                 path: '/blog',
-                element: <Blog /> 
+                element: <Blog />
             },
             {
                 path: '/shop',
@@ -58,7 +59,7 @@ const router = createBrowserRouter([
             {
                 path: '/login',
                 element: <Login />
-            },            
+            },
             {
                 path: '/predict',
                 element: <Predict />
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'shop/viewproduct/:id',
-                element: <ViewProduct/>
+                element: <ViewProduct />
             },
             {
                 path: '/dashboard',
@@ -97,7 +98,7 @@ const router = createBrowserRouter([
                     // },
                     {
                         path: "/dashboard/manageadmin",
-                        element: <ManageAdmin/>
+                        element: <ManageAdmin />
                     },
                     {
                         path: "/dashboard/addemployee",
@@ -127,6 +128,10 @@ const router = createBrowserRouter([
                         path: "/dashboard/editproduct/:id",
                         element: <EditProduct />
                     },
+                    {
+                        path: "/dashboard/myproductorders",
+                        element: <MyProductOrders />
+                    }
                 ]
             },
             {

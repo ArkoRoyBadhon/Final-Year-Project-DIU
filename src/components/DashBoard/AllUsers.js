@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import userAvatar from '../../assets/image/user-avatar.png';
 import { AuthContext } from '../../Context/AuthProvider';
 
 const AllUsers = () => {
@@ -46,6 +47,7 @@ const AllUsers = () => {
     // }, [fetchUsers])
 
     // console.log("aa");
+    console.log(fetchUsers);
     return (
         <div className=''>
             <div className=" px-10 rounded-2xl  mx-auto  pt-10 ">
@@ -68,11 +70,21 @@ const AllUsers = () => {
                                     <tr key={eachUser._id}>
                                         <td className='sticky l-0'>{count++}</td>
                                         <td>
-                                            <img className='rounded-full w-14 h-14' src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80' alt="no img" />
+                                            {
+                                                eachUser.photoURL ? <img className='rounded-full w-14 h-14' src={eachUser?.photoURL} alt="no img" /> : <img className='rounded-full w-14 h-14' src={userAvatar} alt="no img" />
+                                            }
                                         </td>
                                         <td>{eachUser.name}</td>
                                         <td className=''>{eachUser.email}</td>
-                                        <td>{eachUser.role}</td>
+                                        {
+                                            eachUser.role == 'admin' && <td className='text-rose-500'>{eachUser.role}</td>
+                                        }
+                                        {
+                                            eachUser.role == 'sellerUser' && <td className='text-green-500'>{eachUser.role}</td>
+                                        }
+                                        {
+                                            eachUser.role == 'normalUser' && <td className='text-slate-700'>{eachUser.role}</td>
+                                        }
                                         <td>
                                             <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
                                         </td>

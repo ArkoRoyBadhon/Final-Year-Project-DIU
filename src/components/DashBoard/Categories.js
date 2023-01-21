@@ -55,8 +55,8 @@ const Categories = ({ handleLink }) => {
                 <Link onClick={handleLink} to="/dashboard/showproduct" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">Show Product</Link>
         }
         {
-            activeURL === 'allorders' ? <Link onClick={handleLink} to="/dashboard/allorders" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">All Orders</Link> :
-                <Link onClick={handleLink} to="/dashboard/allorders" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">All Orders</Link>
+            activeURL === 'myproductorders' ? <Link onClick={handleLink} to="/dashboard/myproductorders" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">My Product Orders</Link> :
+                <Link onClick={handleLink} to="/dashboard/myproductorders" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">My Product Orders</Link>
         }
     </>
 
@@ -92,6 +92,10 @@ const Categories = ({ handleLink }) => {
         {
             activeURL === 'allorders' ? <Link onClick={handleLink} to="/dashboard/allorders" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">All Orders</Link> :
                 <Link onClick={handleLink} to="/dashboard/allorders" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">All Orders</Link>
+        }
+        {
+            activeURL === 'myproductorders' ? <Link onClick={handleLink} to="/dashboard/myproductorders" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">My Product Orders</Link> :
+                <Link onClick={handleLink} to="/dashboard/myproductorders" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">My Product Orders</Link>
         }
     </>
 

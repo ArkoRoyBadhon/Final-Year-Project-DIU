@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import Loader from '../Shared/Loader';
 
-const AllOrders = () => {
+const MyProductOrders = () => {
 
     const { user } = useContext(AuthContext)
     const [fetchUsers, setFetchUsers] = useState(null);
@@ -13,7 +13,7 @@ const AllOrders = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5005/allorders`)
+        fetch(`http://localhost:5005/allorders?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setFetchUsers(data))
             .catch(err => toast.error(err))
@@ -76,12 +76,12 @@ const AllOrders = () => {
                                                         </td>
                                                         <td>{eachUser.productInfo.name}</td>
                                                         <td>{eachUser?.orderInfo?.quantity}</td>
-                                                        <td>{eachUser?.orderInfo?.price}</td>
-                                                        <td>{eachUser?.orderInfo?.tPrice}</td>
+                                                        <td>{eachUser?.orderInfo?.price}Tk</td>
+                                                        <td>{eachUser?.orderInfo?.tPrice}Tk</td>
                                                         <td className=''>{eachUser.productInfo.authorEmail}</td>
                                                         <td className=''>{eachUser.orderInfo.orderPersonEmail}</td>
-                                                        <td>{eachUser?.orderInfo?.payment ? <span className='text-green-500'>Paid</span> : <span className='text-red-500'>Not paid</span> }</td>
-                                                        <td>                                                            
+                                                        <td>{eachUser?.orderInfo?.payment ? <span className='text-green-500'>Paid</span> : <span className='text-red-500'>Not paid</span>}</td>
+                                                        <td>
                                                             <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm p-2 m-0 ">Cancel</button>
                                                         </td>
                                                     </tr>
@@ -98,4 +98,4 @@ const AllOrders = () => {
     );
 };
 
-export default AllOrders;
+export default MyProductOrders;

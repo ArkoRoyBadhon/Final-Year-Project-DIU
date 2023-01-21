@@ -11,6 +11,7 @@ import Categories from './Categories';
 import EditProduct from './EditProduct';
 import ManageAdmin from './ManageAdmin';
 import MyOrders from './MyOrders';
+import MyProductOrders from './MyProductOrders';
 import MyProfile from './MyProfile';
 import ShowProduct from './ShowProduct';
 import ViewEmployee from './ViewEmployee';
@@ -28,8 +29,8 @@ const DashBoard = ({ children }) => {
     const [pass, setPass] = useState(false)
     const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate()
-    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct']
-    const sellerLi = ['showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct']
+    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders']
+    const sellerLi = ['showproduct', 'addproduct', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders']
     const normalUserLi = ['bookedmarkitems', 'myorders', 'myprofile', 'viewproduct']
     const [reFetch, setRefetch] = useState(false);
 
@@ -55,7 +56,7 @@ const DashBoard = ({ children }) => {
             .then(data => {
                 // setRefetch(false)
                 if (data[0].role === 'admin') {
-                  
+
                     const check = adminLi.includes(nowPath);
                     if (check) {
                         setPass(true)
@@ -66,7 +67,7 @@ const DashBoard = ({ children }) => {
                     }
                 }
                 else if (data[0].role === 'sellerUser') {
-                    
+
                     const check = sellerLi.includes(nowPath);
                     if (check) {
                         setPass(true)
@@ -77,7 +78,7 @@ const DashBoard = ({ children }) => {
                     }
                 }
                 else if (data[0].role === 'normalUser') {
-                    
+
                     const check = normalUserLi.includes(nowPath);
                     if (check) {
                         setPass(true)
@@ -183,6 +184,9 @@ const DashBoard = ({ children }) => {
                             }
                             {
                                 url === "editproduct" && <EditProduct />
+                            }
+                            {
+                                url === 'myproductorders' && <MyProductOrders />
                             }
                         </>
                     }
