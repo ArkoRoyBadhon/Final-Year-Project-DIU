@@ -16,6 +16,7 @@ import ViewEmployee from './ViewEmployee';
 const DashBoard = ({ children }) => {
     const { user } = useContext(AuthContext)
     const [boolValue, setBoolValue] = useState(false);
+
     const [cLocation, setCLocation] = useState("");
     const [url, setUrl] = useState('/dashboard')
     const path = useLocation()
@@ -28,9 +29,12 @@ const DashBoard = ({ children }) => {
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data[0])
-                if (url === undefined && path.pathname.split('/')[1] === 'dashboard') {
+                console.log(url, pass)
+                if (url === 'myprofile') {
+                    setPass(true)
+                }
+                else if (url === undefined && path.pathname.split('/')[1] === 'dashboard') {
                     return navigate('/dashboard/myprofile')
-                    setPass(true)                   
                 }
                 else if (url === 'manageadmin' || url == 'viewemployee' || url == 'addemployee' || url == 'allusers') {
                     if (data[0].role !== 'admin') {
@@ -51,6 +55,7 @@ const DashBoard = ({ children }) => {
                     }
                 }
                 else if (url == 'showproduct' || url == 'addproduct' || url == 'allorders') {
+                    console.log(data[0].role);
                     if (data[0].role === 'normalUser') {
                         setPass(false)
                         return navigate('/dashboard/myprofile')
@@ -59,7 +64,6 @@ const DashBoard = ({ children }) => {
                         setPass(true)
                     }
                 }
-                setPass(true)
             })
             .catch(err => console.log(err.message))
     }, [user, url, boolValue, path])
@@ -79,14 +83,14 @@ const DashBoard = ({ children }) => {
                 <div className="col-span-10 lg:col-span-8 pb-8 rounded-xl  lg:rounded-r-xl rounded-l-none bg-green-200">
 
                     {
-                        pass && <>
+                        pass === true && <>
                             {
                                 url === "dashboard" && <MyProfile />
                             }
                             {
                                 url === "allusers" && <AllUsers />
                             }
-                            {url === "addProduct" && <AddProduct />
+                            {url === "addproduct" && <AddProduct />
                             }
                             {
                                 url === "showproduct" && <ShowProduct />

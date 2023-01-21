@@ -7,6 +7,7 @@ const Register = () => {
 
     const { signUpWithEmail, updateUser, user, logOut, UserVerifyFunction } = useContext(AuthContext)
     const navigate = useNavigate();
+    const imageHostKey = process.env.REACT_APP_imgbb_key
 
     const handleSignUpForm = (event) => {
         event.preventDefault();
@@ -18,8 +19,7 @@ const Register = () => {
         const address = form.address.value;
         const password = form.password.value;
         const role = form.userType.value;
-
-
+        const photo = form.photo.files[0];
         const saveinfo = {
             name,
             phone,
@@ -29,38 +29,55 @@ const Register = () => {
             role: role,
         }
 
-        console.log(saveinfo);
+        // console.log(saveinfo);
 
         signUpWithEmail(email, password)
             .then(res => {
                 const user = res.user
                 toast.success('SignUp Successfully!')
-                const info = {
-                    displayName: name,
-                    phoneNumber: phone,
-                    address: address
-                }
-                updateUser(info)
-                    .then(result => {
-                        // console.log(result);
-                        saveUser(saveinfo)
-                        // alert('user saved')
-                    })
-                    .catch(err => toast.error(err.message))
+                const formData = new FormData();
+                formData.append('image', photo);
+                const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
+                fetch(url, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(imgData => {
+                        // console.log(imgData);
+                        const photoURL = imgData?.data?.url
 
-                form.reset()
+                        const info = {
+                            displayName: name,
+                            phoneNumber: phone,
+                            address: address,
+                            photoURL: photoURL
+                        }
+                        // console.log(info, user)
+                        updateUser(info)
+                            .then(result => {
+                                // console.log('result', result)
+                                const newSaveInfo = { ...saveinfo, photoURL }
+                                // console.log(newSaveInfo);
+                                saveUser(newSaveInfo)
+                            })
+                            .catch(err => toast.error(err.message))
+                        form.reset()
 
-                UserVerifyFunction()
-                    .then(() => {
-                        toast('An email verification mail sent to your email')
+                        UserVerifyFunction()
+                            .then(() => {
+                                toast('An email verification mail sent to your email')
+                            })
+                            .catch(error => alert('something wrong'))
+                        logOut()
+                            .then(() => {
+                                navigate('/login')
+                            })
+                            .catch(err => toast.error(err.message))
                     })
-                    .catch(error => alert('something wrong'))
-                logOut()
-                    .then(() => {
-                        navigate('/login')
-                    })
-                    .catch(err => toast.error(err.message))
-                // navigate('/login')
+
+
+
             })
             .catch(err => {
                 toast.error(err.message);
@@ -120,7 +137,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="label-text">Address</span>
                             </label>
-                            <textarea required  type="email" name='address' placeholder="Enter your Address" className="input input-bordered" />
+                            <textarea required type="email" name='address' placeholder="Enter your Address" className="input input-bordered" />
                         </div>
                         <div className='form-control'>
                             <label className="label">
@@ -134,9 +151,15 @@ const Register = () => {
                         </div>
                         <div className="form-control">
                             <label className="label">
+                                <span className="label-text">Select your photo</span>
+                            </label>
+                            <input type="file" className="file-input file-input-bordered w-full " required name='photo' />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name='password' placeholder="Password" className="input input-bordered" required/>
+                            <input type="password" name='password' placeholder="Password" className="input input-bordered" required />
                             <label className="label">
                                 <Link to="/login" className="label-text-alt link link-hover underline">Already have an account? LogIn</Link>
                             </label>
