@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import ViewProduct from '../ViewProduct/ViewProduct';
 import AddEmployee from './AddEmployee';
 import AddProduct from './AddProduct';
 import AllOrders from './AllOrders';
@@ -64,6 +65,7 @@ const DashBoard = ({ children }) => {
                         setPass(true)
                     }
                 }
+                setPass(true)
             })
             .catch(err => console.log(err.message))
     }, [user, url, boolValue, path])
@@ -115,6 +117,9 @@ const DashBoard = ({ children }) => {
                             }
                             {
                                 url === "allorders" && <AllOrders />
+                            }
+                            {
+                                url === "viewproduct" && <ViewProduct />
                             }
                         </>
                     }

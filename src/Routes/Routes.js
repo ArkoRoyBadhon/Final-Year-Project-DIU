@@ -22,6 +22,7 @@ import Register from "../components/Register/Register";
 import PrivateAdmin from "../components/Shared/PrivateAdmin";
 import PrivatePage from "../components/Shared/PrivatePage";
 import ShopMain from "../components/Shop/ShopMain";
+import ViewProduct from "../components/ViewProduct/ViewProduct";
 import Main from "../layouts/MainLayout/Main";
 
 
@@ -67,12 +68,20 @@ const router = createBrowserRouter([
                 element: <Cart />
             },
             {
+                path: 'shop/viewproduct/:id',
+                element: <ViewProduct/>
+            },
+            {
                 path: '/dashboard',
                 element: <PrivatePage><DashBoard /></PrivatePage>,
                 children: [
                     {
                         path: "/dashboard/allusers",
                         element: <AllUsers />
+                    },
+                    {
+                        path: "/dashboard/viewproduct/:id",
+                        element: <ViewProduct />
                     },
                     {
                         path: "/dashboard/addproduct",
