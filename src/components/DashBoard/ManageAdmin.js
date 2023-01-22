@@ -32,7 +32,7 @@ const ManageAdmin = () => {
     }, [reFetch])
 
     const manageAdmin = (id, action) => {
-        console.log(id, action)
+        // console.log(id, action)
         const data = { id, action }
         fetch("http://localhost:5005/manageadmin", {
             method: 'PUT',
@@ -43,7 +43,7 @@ const ManageAdmin = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.modifiedCount > 0) {
                     toast.success('Successfully Done!')
                 }

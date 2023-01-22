@@ -17,7 +17,8 @@ const MyProfile = () => {
  
     return (
         <div className='h-auto'>
-            <div className='px-10 rounded-2xl pb-10  py-10 max-w-screen-md mx-auto  '>
+            <h2 className='text-2xl font-medium text-center py-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br /> Welcome to DashBoard</h2>
+            <div className='px-10 rounded-2xl pb-10 max-w-screen-md mx-auto  '>
 
                 {
                     user && userInfo ? <div className='flex flex-col gap-4 items-center bg-green-300  rounded-xl pb-8'>

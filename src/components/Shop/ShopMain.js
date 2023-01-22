@@ -3,15 +3,17 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import Item from './Item';
 import { AuthContext } from '../../Context/AuthProvider';
+import Loader from '../Shared/Loader';
 
 const ShopMain = () => {
-    const [allItems, setAllItems] = useState([]);
+    const [allItems, setAllItems] = useState(null);
     const [mediBtn, setMediBtn] = useState(true);
     const [machBtn, setMachBtn] = useState(false);
     const [refetch, setReFetch] = useState(false);
     const { user, logOut } = useContext(AuthContext);
 
     const handleLBtn = () => {
+        setAllItems(null)
         setMediBtn(true);
         setMachBtn(false);
         fetch(`http://localhost:5005/items/Medicine?email=${user?.email}`)
@@ -20,6 +22,7 @@ const ShopMain = () => {
             .catch(err => toast.error(err.message))
     }
     const handleRBtn = () => {
+        setAllItems(null)
         setMediBtn(false);
         setMachBtn(true);
         fetch(`http://localhost:5005/items/Machinaries?email=${user?.email}`)
@@ -83,10 +86,15 @@ const ShopMain = () => {
                 <Link onClick={handleLBtn} className={mediBtn ? 'bg-[#224229] text-md font-bold hover:bg-[#224229] hover:text-white p-5 rounded-l-full text-white' : 'bg-slate-300 text-xl font-bold hover:bg-[#224229] p-5 rounded-l-full text-slate-600 hover:text-white'}>Medicine</Link>
                 <Link onClick={handleRBtn} className={machBtn ? 'bg-[#224229] text-md font-bold hover:bg-[#224229] p-5 rounded-r-full text-white hover:text-white' : 'bg-slate-300 text-xl font-bold hover:bg-[#224229] p-5 rounded-r-full text-slate-600 hover:text-white'}>Machineries</Link>
             </div>
+            {
+                allItems === null && <Loader />
+            }
+            <div className="w-[97%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
 
-            <div className="w-[97%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
-                    allItems?.map(item => <Item key={item._id} item={item} handleBookedMark={handleBookedMark} />)
+                    allItems && allItems.length === 0 ? <h2 className='text-center font-bold text-xl'>No Data Found.</h2> : <> {
+                        allItems?.map(item => <Item key={item._id} item={item} handleBookedMark={handleBookedMark} />)
+                    }</>
                 }
             </div>
         </div>

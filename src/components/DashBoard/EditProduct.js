@@ -24,12 +24,16 @@ const EditProduct = () => {
             fetch(`http://localhost:5005/editproduct/${id}?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.code == 'No') {
-                        navigate('/dashboard/showproduct')
+                    if (data.code === true) {
+                        // console.log(data)
+                        setProductData(data.result)
                     }
-                    else {
-                        setProductData(data)
-                    }
+                    // if (data.code == 'No') {
+                    //     navigate('/dashboard/showproduct')
+                    // }
+                    // else {
+                    //     setProductData(data)
+                    // }
                 })
         }
     }, [id, reFetch, user])

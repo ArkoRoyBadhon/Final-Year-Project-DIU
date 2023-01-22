@@ -13,18 +13,19 @@ const ShowProduct = () => {
     const { user, logOut } = useContext(AuthContext);
     const inputCategory = useRef()
     const inputType = useRef()
-    const [searchCategory,setSearchCategory] = useState('Medicine')
-    const [type,setType] = useState('Own')
+    const [searchCategory, setSearchCategory] = useState('Medicine')
+    const [type, setType] = useState('Own')
 
-    useEffect(() => { 
+    useEffect(() => {
         fetch(`http://localhost:5005/allitems?email=${user?.email}&category=${searchCategory}&type=${type}`)
             .then(res => res.json())
             .then(data => setAllItems(data))
-    }, [user,searchCategory,type])
+    }, [user, searchCategory, type])
 
     const searchHandle = () => {
         let category = inputCategory.current.value;
         let nowType = inputType.current.value;
+        setAllItems(null)
         setSearchCategory(category);
         setType(nowType);
     }
@@ -80,11 +81,14 @@ const ShowProduct = () => {
                                                         <td>{item.price}Tk</td>
                                                         <td>{item.authorEmail}</td>
                                                         <td className=''>
-
                                                             <Link to={`viewproduct/${item.productId}`} className="btn btn-accent btn-sm  m-0 ">View</Link>
                                                             <button onClick={() => toast.error('Admin cannot be deleted')} className="btn btn-error btn-sm ml-2 ">Delete</button>
 
-                                                            <Link to={`editproduct/${item.productId}`} className="btn btn-primary btn-sm  m-0  ml-2">Edit</Link>
+                                                            {
+                                                                user?.email === item.authorEmail ?
+                                                                    <Link to={`editproduct/${item.productId}`} className="btn btn-primary btn-sm  m-0  ml-2">Edit</Link> :
+                                                                    <button  className="btn btn-primary btn-sm  m-0  ml-2" disabled>Edit</button>
+                                                            }
                                                         </td>
                                                     </tr>
                                                 )

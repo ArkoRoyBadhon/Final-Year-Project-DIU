@@ -23,7 +23,7 @@ const EditEmployee = () => {
         fetch(`http://localhost:5005/getemployee/${id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setPreData(data);
             })
     }, [user])

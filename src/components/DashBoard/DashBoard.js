@@ -53,7 +53,7 @@ const DashBoard = ({ children }) => {
             .then(data => {
                 // setRefetch(false)
                 setUserInfo(data)
-                console.log(data)
+                // console.log(data)
                 if (data[0].role === 'admin') {
 
                     const check = adminLi.includes(nowPath);
@@ -147,8 +147,8 @@ const DashBoard = ({ children }) => {
 
     console.log(user,userInfo);
     return (
-        <div className='bg-green-100  py-10 px-4 '>
-            <h2 className='text-2xl font-medium text-center pb-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br /> Welcome to DashBoard</h2>
+        <div className='bg-white  py-10 px-4 '>
+            
 
             <div className="grid grid-cols-10">
                 <div className="col-span-2  rounded-l-xl hidden lg:flex">
