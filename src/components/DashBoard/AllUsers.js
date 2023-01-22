@@ -47,7 +47,7 @@ const AllUsers = () => {
     // console.log(fetchUsers);
     return (
         <div className=''>
-            <div className=" px-10 rounded-2xl  mx-auto  pt-10 ">
+            <div className="px-1 md:px-10 rounded-2xl  mx-auto  pt-10 ">
                 <h2 className='font-bold text-2xl text-slate-800'>All User List: <span className='ml-1 text-red-600'> {fetchUsers && `${fetchUsers.length}`}</span> </h2>
                 {
                     fetchUsers === null && <Loader />
@@ -58,7 +58,7 @@ const AllUsers = () => {
                             fetchUsers.length === 0 ? <h2 className='text-lg font-bold text-red-600'>No users found.</h2>
                                 :
                                 <div className="overflow-auto rounded-lg">
-                                    <table className='table  mx-auto mt-6  w-full'>
+                                    <table className='table  mx-auto mt-6  w-full text-xs md:text-lg'>
                                         <thead className=''>
                                             <tr>
                                                 <th className=''></th>

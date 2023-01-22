@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import { BsList } from 'react-icons/bs';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import Loader from '../Shared/Loader';
 
-const Categories = ({ handleLink }) => {
+const Categories = ({ handleLink, handleCollapse }) => {
 
     const handleAdmin = () => {
         toast("Comming Soon.....")
@@ -138,7 +139,12 @@ const Categories = ({ handleLink }) => {
     </>
 
     return (
-        <div className='w-fit py-10 h-full text-center bg-green-300 rounded-l '>
+        <div className='w-fit py-10 h-full text-center bg-green-300 rounded-l-xl'>
+            <div>
+                <span className='text-right flex justify-end mr-3 mt-[-30px] w-fit ml-auto' onClick={handleCollapse}>
+                    <BsList className='text-2xl font-extrabold cursor-pointer'></BsList>
+                </span>
+            </div>
             <ul className="py-5">
                 {
                     userInfo !== null && userInfo?.role === 'sellerUser' && sellerUserLi
