@@ -89,22 +89,35 @@ const ManageAdmin = () => {
                                                         <td>{eachUser.name}</td>
                                                         <td>{eachUser.email}</td>
                                                         {
-                                                            eachUser.role == 'admin' && <td className='text-rose-500'>{eachUser.role}</td>
+                                                            eachUser.role == 'admin' && <td className='text-rose-500 font-semibold'>{eachUser.role}</td>
                                                         }
                                                         {
-                                                            eachUser.role == 'sellerUser' && <td className='text-green-500'>{eachUser.role}</td>
+                                                            eachUser.role == 'sellerUser' && <td className='text-green-500 font-semibold'>{eachUser.role}</td>
                                                         }
                                                         {
-                                                            eachUser.role == 'normalUser' && <td className='text-slate-700'>{eachUser.role}</td>
+                                                            eachUser.role == 'normalUser' && <td className='text-slate-700 font-semibold'>{eachUser.role}</td>
+                                                        }
+                                                        {
+                                                            eachUser.role == 'superUser' && <td className='text-red-700 font-semibold'>{eachUser.role}</td>
                                                         }
                                                         <td>
                                                             {
-                                                                user?.email !== eachUser.email && eachUser.role === "admin" &&
-                                                                <button onClick={() => manageAdmin(eachUser._id, 'remove')} className="btn btn-success btn-sm p-1 m-0 text-[#224229] ">Remove Admin</button>
-                                                            }
-                                                            {
-                                                                user?.email !== eachUser.email ? <button onClick={() => manageAdmin(eachUser._id, 'add')} className="btn btn-primary btn-sm p-2 m-0 text-white ">Make Admin</button>
-                                                                    : <h2>Own account</h2>
+                                                                eachUser.role === 'superUser' ? <h2>No action</h2> :
+                                                                    <>
+                                                                        {
+                                                                            eachUser.email === user?.email ?
+                                                                                <h2>Own account</h2>
+                                                                                :
+                                                                                <>
+                                                                                    {
+                                                                                        user?.email !== eachUser.email && eachUser.role === "admin" &&
+                                                                                        <button onClick={() => manageAdmin(eachUser._id, 'remove')} className="btn btn-error btn-sm p-1 m-0 text-[#224229] ">Remove Admin</button>
+                                                                                    }
+                                                                                    {
+                                                                                        user?.email !== eachUser.email && eachUser.role !== 'admin' && <button onClick={() => manageAdmin(eachUser._id, 'add')} className="btn btn-primary btn-sm p-2 m-0 text-white ">Make Admin</button>}
+                                                                                </>
+                                                                        }
+                                                                    </>
                                                             }
                                                         </td>
                                                     </tr>

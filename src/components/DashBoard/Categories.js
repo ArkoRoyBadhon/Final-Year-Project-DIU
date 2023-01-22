@@ -98,6 +98,44 @@ const Categories = ({ handleLink }) => {
                 <Link onClick={handleLink} to="/dashboard/myproductorders" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">My Product Orders</Link>
         }
     </>
+    const superAdminLi = <>
+        {
+            activeURL === 'myprofile' ? <Link onClick={handleLink} to="/dashboard/myprofile" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">My Profile</Link> :
+                <Link onClick={handleLink} to="/dashboard/myprofile" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">My Profile</Link>
+        }
+        {
+            activeURL === 'allusers' ? <Link onClick={handleLink} to='/dashboard/allusers' className="btn hover:text-white  text-green-200 w-4/5 my-2 bg-[#224229]">All Users</Link> :
+                <Link onClick={handleLink} to='/dashboard/allusers' className="btn hover:text-white  bg-green-200 w-4/5 my-2 text-[#224229]">All Users</Link>
+        }
+        {
+            activeURL === 'manageadmin' ? <Link onClick={handleLink} to="/dashboard/manageadmin" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">Manage Admin</Link> :
+                <Link onClick={handleLink} to="/dashboard/manageadmin" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">Manage Admin</Link>
+        }
+        {
+            activeURL === 'addemployee' ? <Link onClick={handleLink} to="/dashboard/addemployee" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">Add Employee</Link> :
+                <Link onClick={handleLink} to="/dashboard/addemployee" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">Add Employee</Link>
+        }
+        {
+            activeURL === 'viewemployee' ? <Link onClick={handleLink} to="/dashboard/viewemployee" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">View Employee</Link> :
+                <Link onClick={handleLink} to="/dashboard/viewemployee" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">View Employee</Link>
+        }
+        {
+            activeURL === 'addproduct' ? <Link onClick={handleLink} to="/dashboard/addproduct" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">Add Product</Link> :
+                <Link onClick={handleLink} to="/dashboard/addproduct" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">Add Product</Link>
+        }
+        {
+            activeURL === 'showproduct' ? <Link onClick={handleLink} to="/dashboard/showproduct" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">Show Product</Link> :
+                <Link onClick={handleLink} to="/dashboard/showproduct" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">Show Product</Link>
+        }
+        {
+            activeURL === 'allorders' ? <Link onClick={handleLink} to="/dashboard/allorders" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">All Orders</Link> :
+                <Link onClick={handleLink} to="/dashboard/allorders" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">All Orders</Link>
+        }
+        {
+            activeURL === 'myproductorders' ? <Link onClick={handleLink} to="/dashboard/myproductorders" className="btn hover:text-white text-green-200 bg-[#224229] w-4/5 my-2">My Product Orders</Link> :
+                <Link onClick={handleLink} to="/dashboard/myproductorders" className="btn hover:text-white bg-green-200 text-[#224229] w-4/5 my-2">My Product Orders</Link>
+        }
+    </>
 
     return (
         <div className='w-fit py-10 h-full text-center bg-green-300 rounded-l '>
@@ -110,6 +148,9 @@ const Categories = ({ handleLink }) => {
                 }
                 {
                     userInfo !== null && userInfo?.role === 'admin' && adminLi
+                }
+                {
+                    userInfo !== null && userInfo?.role === 'superUser' && superAdminLi
                 }
                 {
                     userInfo === null && <Loader></Loader>

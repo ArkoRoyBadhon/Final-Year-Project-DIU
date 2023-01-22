@@ -8,7 +8,7 @@ import Loader from '../Shared/Loader';
 
 const ShowProduct = () => {
 
-    console.log('showProduct');
+    // console.log('showProduct');
     const [allitems, setAllItems] = useState(null)
     const { user, logOut } = useContext(AuthContext);
     const inputCategory = useRef()

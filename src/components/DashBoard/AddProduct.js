@@ -66,7 +66,7 @@ const AddProduct = () => {
 
     }
 
-    console.log(errors)
+    // console.log(errors)
 
     return (
         <div className='h-auto'>

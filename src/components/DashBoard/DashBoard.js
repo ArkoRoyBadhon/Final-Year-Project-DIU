@@ -26,24 +26,20 @@ const DashBoard = ({ children }) => {
     const [cLocation, setCLocation] = useState("");
     const [url, setUrl] = useState('/dashboard')
     const path = useLocation()
-    console.log(path);
+    // console.log(path);
     const [pass, setPass] = useState(false)
     const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate()
-    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders','editemployee']
-    const sellerLi = ['showproduct', 'addproduct', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders']
-    const normalUserLi = ['bookedmarkitems', 'myorders', 'myprofile', 'viewproduct']
+    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders','editemployee','dashboard']
+    const superAdminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders','editemployee','dashboard']
+    const sellerLi = ['showproduct', 'addproduct', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders','dashboard']
+    const normalUserLi = ['bookedmarkitems', 'myorders', 'myprofile', 'viewproduct','dashboard']
     const [reFetch, setRefetch] = useState(false);
 
+  
     useEffect(() => {
 
-
-
         let nowPath = path.pathname.split('/')[2]
-        // if (nowPath == 'showproduct') {
-        //    return  navigate('/')
-        // }
-        // console.log(nowPath);
 
         if (nowPath === undefined) {
             return navigate('/dashboard/myprofile')
@@ -56,6 +52,8 @@ const DashBoard = ({ children }) => {
             .then(res => res.json())
             .then(data => {
                 // setRefetch(false)
+                setUserInfo(data)
+                console.log(data)
                 if (data[0].role === 'admin') {
 
                     const check = adminLi.includes(nowPath);
@@ -70,6 +68,17 @@ const DashBoard = ({ children }) => {
                 else if (data[0].role === 'sellerUser') {
 
                     const check = sellerLi.includes(nowPath);
+                    if (check) {
+                        setPass(true)
+                    }
+                    else {
+                        return navigate('/dashboard/myprofile')
+
+                    }
+                }
+                else if (data[0].role === 'superUser') {
+
+                    const check = superAdminLi.includes(nowPath);
                     if (check) {
                         setPass(true)
                     }
@@ -136,6 +145,7 @@ const DashBoard = ({ children }) => {
         setBoolValue(true);
     }
 
+    console.log(user,userInfo);
     return (
         <div className='bg-green-100  py-10 px-4 '>
             <h2 className='text-2xl font-medium text-center pb-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br /> Welcome to DashBoard</h2>

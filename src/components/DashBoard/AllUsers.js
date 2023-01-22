@@ -44,7 +44,7 @@ const AllUsers = () => {
     // }, [fetchUsers])
 
     // console.log("aa");
-    console.log(fetchUsers);
+    // console.log(fetchUsers);
     return (
         <div className=''>
             <div className=" px-10 rounded-2xl  mx-auto  pt-10 ">
@@ -90,11 +90,21 @@ const AllUsers = () => {
                                                         {
                                                             eachUser.role == 'normalUser' && <td className='text-slate-700'>{eachUser.role}</td>
                                                         }
+                                                        {
+                                                            eachUser.role == 'superUser' && <td className='text-slate-700'>{eachUser.role}</td>
+                                                        }
                                                         <td>
                                                             {
-                                                                eachUser?.email === user?.email ? <h2>Own account</h2>
-                                                                    : <button onClick={() => toast.success('No functionality done yet!')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
+                                                                eachUser.role !== 'superUser' && eachUser?.email === user?.email && <h2>Own account</h2>
                                                             }
+                                                            {
+                                                                eachUser.role === 'superUser' && <h2>Cannot delete superuser</h2>
+
+                                                            }
+                                                            {
+                                                                eachUser.role !== 'superUser' && eachUser?.email !== user?.email && <button onClick={() => toast.success('No functionality done yet!')} className="btn btn-error btn-sm p-2 m-0 ">Delete</button>
+                                                            }
+
                                                         </td>
                                                     </tr>
                                                 )
