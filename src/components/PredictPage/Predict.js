@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { Link } from 'react-router-dom';
 import '../Shared/Navbar.css';
 import Result from './Result';
 
@@ -45,7 +44,7 @@ const img = {
 };
 
 const Predict = () => {
-    const [dropdownValue, setDropDownValue] = useState("");
+    const [dropdownValue, setDropDownValue] = useState("Rice");
     const [predictResult, setPredictResult] = useState(null)
 
     const [files, setFiles] = useState([]);
@@ -83,6 +82,9 @@ const Predict = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        const category = e.target.category.value;
+        setDropDownValue(category);
+
         const image = files;
         let formData = new FormData();
         formData.append('image', e.target.file.files[0]);
@@ -90,27 +92,24 @@ const Predict = () => {
         const config = {
             // mode: 'no-cors',
             method: 'POST',
-            formData
-            ,
+            formData,
             body: formData
         }
-        if (dropdownValue == 'Rice') {
+        if (category == 'Rice') {
             fetch(`http://127.0.0.1:5000/predict/rice`, config)
                 .then(res => res.json())
                 .then(data => {
-
                     setPredictResult(data)
                 })
         }
-        else if (dropdownValue == 'Potato') {
+        else if (category == 'Potato') {
             fetch(`http://127.0.0.1:5000/predict/potato`, config)
                 .then(res => res.json())
                 .then(data => {
-
                     setPredictResult(data)
                 })
         }
-        if (dropdownValue == 'Tomato') {
+        if (category == 'Tomato') {
             fetch(`http://127.0.0.1:5000/predict/tomato`, config)
                 .then(res => res.json())
                 .then(data => {
@@ -129,14 +128,7 @@ const Predict = () => {
                             <h1 className="text-3xl text-center
                           text-slate-800 font-bold uppercase">Check Your Crops<br /> </h1>
                             <div className="dropdown dropdown-end mt-5">
-                                <select className="select select-success w-[300px]" required defaultValue={dropdownValue}>
-                                    <option disabled selected>Pick your favorite anime</option>
-                                    {
-                                        cropName?.map(crop => <>
-                                            <option><Link onClick={() => setDropDownValue(`${crop.name}`)}>{crop.name}</Link></option>
-                                        </>)
-                                    }
-                                </select>
+
                                 {/* <input type="text" className='input w-[300px]  bg-slate-300 text-black' placeholder='please enter a crop name' />
                                 <ul tabIndex={0} className="menu dropdown-content p-2 shadow bg-base-100 rounded-box w-52 mt-4">
                                     {
@@ -149,8 +141,15 @@ const Predict = () => {
                             {/* <button className='btn'>Select</button> */}
                         </div>
 
-                        <form onSubmit={handleSubmit} className=" rounded-lg">
-                            <input type="file" name='file' className="file-input file-input-bordered border-success  file-input-success w-[300px]" />
+                        <form onSubmit={handleSubmit} className=" rounded-lg flex flex-col gap-4 max-w-[600px] mx-auto items-center">
+                            <select className="select select-success w-[300px]" required name='category' onChange={() => setPredictResult(null)}>
+                                {
+                                    cropName?.map(crop =>
+                                        <option key={crop.name} value={crop.name}>{crop.name}</option>
+                                    )
+                                }
+                            </select>
+                            <input type="file" name='file' className="file-input file-input-bordered border-success  file-input-success max-w-[300px]" required />
                             {/* <div  {...getRootProps({ className: 'dropzone' })}>
                                 <input type='file'   {...getInputProps()} />
                                 <div className='font-bold border border-red-500 py-5 text-sm text-white flex flex-col items-center'>Drag & Drop Image, or click to select files
@@ -161,7 +160,7 @@ const Predict = () => {
                             </aside> */}
 
                             <br />
-                            <button type='submit' className="btn btn-primary bg-[#224229] border-none  px-10 mt-8">Predict</button>
+                            <button type='submit' className="btn btn-primary bg-[#224229] border-none  px-10 max-w-[300px]">Predict</button>
                         </form>
                         {/* {
                             <img src={images} alt="nothing" />

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const Result = ({ predictResult }) => {
 
     return (
-        <div className='max-w-screen-lg my-10 bg-base-200 mx-auto h-[30rem] rounded-lg shadow-2xl mb-10'>
-            <h2 className='pt-10 text-2xl font-bold pl-10 bg-green-400 text-slate-700 pb-7 uppercase'>The Predicted Result</h2>
+        <div className='max-w-screen-lg w-[95%] my-10 bg-base-200 mx-auto h-[30rem] rounded-lg shadow-2xl mb-10'>
+            <h2 className='pt-10 text-2xl rounded-t-lg font-bold pl-10 bg-green-400 text-slate-800 pb-7 uppercase'>The Predicted Result</h2>
             <div className="pl-10 mt-10 text-left flex flex-col gap-4">
                 <p className="text-xl font-bold ">Crop Name: {predictResult.pred[1]}</p>
                 <p className="text-xl font-bold ">Disease Name: {predictResult.pred[0]}</p>
