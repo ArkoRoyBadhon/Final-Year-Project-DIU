@@ -15,7 +15,7 @@ const BookedmarkItems = () => {
         fetch(`http://localhost:5005/mybookedmark?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setFetchUsers(data);
             })
             .catch(err => toast.error(err))

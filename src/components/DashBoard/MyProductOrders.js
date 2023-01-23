@@ -37,11 +37,11 @@ const MyProductOrders = () => {
         //     .then(() => alert('user delete from firebase'))
 
     }
-    console.log(fetchUsers)
+    // console.log(fetchUsers)
     return (
         <div className=''>
             <div className=" px-10 rounded-2xl   pt-10 ">
-                <h2 className='font-bold text-2xl text-slate-800'>All Orders List</h2>
+                <h2 className='font-bold text-2xl text-slate-800'>My Product Orders List</h2>
                 {
                     fetchUsers === null && <Loader />
                 }

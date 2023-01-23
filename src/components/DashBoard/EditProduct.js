@@ -19,16 +19,21 @@ const EditProduct = () => {
     const [reFetch, setRefetch] = useState(false)
 
     useEffect(() => {
+        const id = location.pathname.split('/')[3]
         if (user) {
             fetch(`http://localhost:5005/editproduct/${id}?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
-                    if (data.code == 'No') {
-                        return navigate('/dashboard/showproduct')
+                    if (data.code === true) {
+                        // console.log(data)
+                        setProductData(data.result)
                     }
-                    else {
-                        setProductData(data)
-                    }
+                    // if (data.code == 'No') {
+                    //     navigate('/dashboard/showproduct')
+                    // }
+                    // else {
+                    //     setProductData(data)
+                    // }
                 })
         }
     }, [id, reFetch, user])
@@ -76,7 +81,7 @@ const EditProduct = () => {
                 toast.success('Successfully Edit!')
                 setRefetch(!reFetch)
                 setProductData(null)
-                return navigate('/dashboard/showproduct')
+                navigate('/dashboard/showproduct')
             })
         // .catch(err => toast.error(err.message))
     }

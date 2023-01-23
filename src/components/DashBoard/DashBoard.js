@@ -16,6 +16,8 @@ import MyProductOrders from './MyProductOrders';
 import MyProfile from './MyProfile';
 import ShowProduct from './ShowProduct';
 import ViewEmployee from './ViewEmployee';
+import { BsList } from 'react-icons/bs';
+
 
 const DashBoard = ({ children }) => {
     const { user } = useContext(AuthContext)
@@ -26,24 +28,36 @@ const DashBoard = ({ children }) => {
     const [cLocation, setCLocation] = useState("");
     const [url, setUrl] = useState('/dashboard')
     const path = useLocation()
-    console.log(path);
+    // console.log(path);
     const [pass, setPass] = useState(false)
     const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate()
-    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders','editemployee']
-    const sellerLi = ['showproduct', 'addproduct', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders']
-    const normalUserLi = ['bookedmarkitems', 'myorders', 'myprofile', 'viewproduct']
+    const adminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders', 'editemployee', 'dashboard']
+    const superAdminLi = ['manageadmin', 'viewemployee', 'addemployee', 'allusers', 'showproduct', 'addproduct', 'allorders', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders', 'editemployee', 'dashboard']
+    const sellerLi = ['showproduct', 'addproduct', 'editproduct', 'myprofile', 'viewproduct', 'myproductorders', 'dashboard']
+    const normalUserLi = ['bookedmarkitems', 'myorders', 'myprofile', 'viewproduct', 'dashboard']
+
     const [reFetch, setRefetch] = useState(false);
+    const [showNavbar, setShowNavbar] = useState(false);
+    const [page, setPage] = useState(true);
+
+
+    useEffect(() => {
+        const width = window.screen.width
+        if (width < 800) {
+            setShowNavbar(false)
+            setPage(true)
+        }
+        else {
+            setShowNavbar(true)
+            setPage(true)
+        }
+
+    }, [])
 
     useEffect(() => {
 
-
-
         let nowPath = path.pathname.split('/')[2]
-        // if (nowPath == 'showproduct') {
-        //    return  navigate('/')
-        // }
-        // console.log(nowPath);
 
         if (nowPath === undefined) {
             return navigate('/dashboard/myprofile')
@@ -56,6 +70,8 @@ const DashBoard = ({ children }) => {
             .then(res => res.json())
             .then(data => {
                 // setRefetch(false)
+                setUserInfo(data)
+                // console.log(data)
                 if (data[0].role === 'admin') {
 
                     const check = adminLi.includes(nowPath);
@@ -70,6 +86,17 @@ const DashBoard = ({ children }) => {
                 else if (data[0].role === 'sellerUser') {
 
                     const check = sellerLi.includes(nowPath);
+                    if (check) {
+                        setPass(true)
+                    }
+                    else {
+                        return navigate('/dashboard/myprofile')
+
+                    }
+                }
+                else if (data[0].role === 'superUser') {
+
+                    const check = superAdminLi.includes(nowPath);
                     if (check) {
                         setPass(true)
                     }
@@ -136,65 +163,92 @@ const DashBoard = ({ children }) => {
         setBoolValue(true);
     }
 
+    const handleCollapse = () => {
+        const width = window.screen.width
+        if (width < 800) {
+            setShowNavbar(!showNavbar)
+            setPage(!page)
+        }
+        else {
+            setShowNavbar(!showNavbar)
+            setPage(true)
+        }
+    }
+    // console.log(user, userInfo);
+
     return (
-        <div className='bg-green-100  py-10 px-4 '>
-            <h2 className='text-2xl font-medium text-center pb-6 text-green-900'>Hello, <span className='font-bold'>{user.displayName}!</span><br /> Welcome to DashBoard</h2>
+        <div className='bg-white  py-10 px-4 '>
 
-            <div className="grid grid-cols-10">
-                <div className="col-span-2  rounded-l-xl hidden lg:flex">
-                    <Categories handleLink={handleLink} />
-                </div>
-                <div className="col-span-10 lg:col-span-8 pb-8 rounded-xl  lg:rounded-r-xl rounded-l-none bg-green-200">
+            <div className="flex flex-row">
+                {
+                    showNavbar === false ? <></>
+                        :
+                        <div className={`col-span-2 w-[25%] min-w-[300px]  mx-auto ${page ? 'rounded-l-xl rounded-r-none' : "rounded-xl"}`}>
+                            <Categories handleLink={handleLink} handleCollapse={handleCollapse} />
+                        </div>
+                }
+                {
+                    page === false ? <></>
+                        :
+                        <div className={`pb-1 md:pb-8 
+                         bg-green-200 ${showNavbar ? 'w-[75%] rounded-l-none rounded-r-xl' : 'w-[100%] rounded-xl'} `}>
+                            <div>
+                                <span className='text-right flex justify-start ml-3 mt-[10px] w-fit' onClick={handleCollapse}>
+                                    <BsList className='text-2xl font-extrabold cursor-pointer'></BsList>
+                                </span>
+                            </div>
 
-                    {
-                        reFetch == false && pass === true && <>
                             {
-                                url === "dashboard" && <MyProfile />
+                                reFetch == false && pass === true && <>
+                                    {
+                                        url === "dashboard" && <MyProfile />
+                                    }
+                                    {
+                                        url === "allusers" && <AllUsers />
+                                    }
+                                    {url === "addproduct" && <AddProduct />
+                                    }
+                                    {
+                                        url === "showproduct" && <ShowProduct />
+                                    }
+                                    {
+                                        url === "manageadmin" && <ManageAdmin />
+                                    }
+                                    {
+                                        url === "addemployee" && <AddEmployee />
+                                    }
+                                    {
+                                        url === "viewemployee" && <ViewEmployee />
+                                    }
+                                    {
+                                        url === "myprofile" && <MyProfile />
+                                    }
+                                    {
+                                        url === "bookedmarkitems" && <BookedmarkItems />
+                                    }
+                                    {
+                                        url === "myorders" && <MyOrders />
+                                    }
+                                    {
+                                        url === "allorders" && <AllOrders />
+                                    }
+                                    {
+                                        url === "viewproduct" && <ViewProduct />
+                                    }
+                                    {
+                                        url === "editproduct" && <EditProduct />
+                                    }
+                                    {
+                                        url === 'myproductorders' && <MyProductOrders />
+                                    }
+                                    {
+                                        url === 'editemployee' && <EditEmployee />
+                                    }
+                                </>
                             }
-                            {
-                                url === "allusers" && <AllUsers />
-                            }
-                            {url === "addproduct" && <AddProduct />
-                            }
-                            {
-                                url === "showproduct" && <ShowProduct />
-                            }
-                            {
-                                url === "manageadmin" && <ManageAdmin />
-                            }
-                            {
-                                url === "addemployee" && <AddEmployee />
-                            }
-                            {
-                                url === "viewemployee" && <ViewEmployee />
-                            }
-                            {
-                                url === "myprofile" && <MyProfile />
-                            }
-                            {
-                                url === "bookedmarkitems" && <BookedmarkItems />
-                            }
-                            {
-                                url === "myorders" && <MyOrders />
-                            }
-                            {
-                                url === "allorders" && <AllOrders />
-                            }
-                            {
-                                url === "viewproduct" && <ViewProduct />
-                            }
-                            {
-                                url === "editproduct" && <EditProduct />
-                            }
-                            {
-                                url === 'myproductorders' && <MyProductOrders />
-                            }
-                            {
-                                url === 'editemployee' && <EditEmployee />
-                            }
-                        </>
-                    }
-                </div>
+                        </div>
+                }
+
             </div>
         </div>
     );

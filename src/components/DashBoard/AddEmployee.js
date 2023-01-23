@@ -39,7 +39,7 @@ const AddEmployee = () => {
                         email: data.email,
                         phone: data.phone
                     }
-                    console.log(itemInfo);
+                    // console.log(itemInfo);
 
                     fetch(`http://localhost:5005/addemployee`, {
                         method: 'POST',

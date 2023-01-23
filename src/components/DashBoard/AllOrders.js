@@ -37,7 +37,7 @@ const AllOrders = () => {
         //     .then(() => alert('user delete from firebase'))
 
     }
-    console.log(fetchUsers)
+    // console.log(fetchUsers)
     return (
         <div className=''>
             <div className=" px-10 rounded-2xl   pt-10 ">
@@ -51,7 +51,7 @@ const AllOrders = () => {
                             fetchUsers.length == 0 ? <h2 className='text-lg font-bold text-red-500 mt-10'>No Order.</h2>
                                 :
                                 <div className="overflow-auto rounded-lg">
-                                    <table className=' md:table  mx-auto mt-6  w-full'>
+                                    <table className='table  mx-auto mt-6  w-full'>
                                         <thead className=''>
                                             <tr>
                                                 <th className=''></th>

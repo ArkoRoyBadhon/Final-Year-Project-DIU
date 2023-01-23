@@ -62,7 +62,7 @@ const ViewEmployee = () => {
                         <tbody className=''>
                             {
                                 fetchUsers.map(employee =>
-                                    <tr>
+                                    <tr key={employee._id}>
                                         <td>{count++}</td>
                                         <td>
                                             <div className="avatar">

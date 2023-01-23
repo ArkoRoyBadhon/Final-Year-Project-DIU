@@ -22,9 +22,7 @@ const ViewProduct = () => {
             })
     }, [id])
 
-
     return (
-
         <div className="p-10 ">
             {
                 productData === null && <Loader></Loader>
@@ -42,7 +40,7 @@ const ViewProduct = () => {
                         <div className='flex flex-col md:flex-row gap-5  md:gap-24 '>
                             <div>
                                 <p className='uppercase text-slate-500 text-lg font-semibold'>PRICE</p>
-                                <h2 className='text-xl font-bold'>${productData.price}</h2>
+                                <h2 className='text-xl font-bold text-green-600'>{productData.price}Tk</h2>
                                 <p className='text-slate-500'>*Free shipping</p>
                             </div>
                             <div>
@@ -57,6 +55,10 @@ const ViewProduct = () => {
                             </div>
                         </div>
                         {/* description */}
+                        <div className='flex gap-2'>
+                            <p className='font-bold w-fit pb-1 mb-2  border-slate-800'>Company:</p>
+                            <p>{productData?.company}</p>
+                        </div>
                         <div>
                             <h4 className='border-b-2 w-fit pb-1 mb-2  border-slate-800'>Description</h4>
                             <p>{productData.description}</p>
