@@ -165,17 +165,6 @@ const Navbar = () => {
         // </div>
         <div className="navbar bg-base-100 px-6 shadow-sm z-50">
             <div className="navbar-start">
-                <div className="dropdown">
-                    <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                    </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        {liList}
-                        <li className='nav-item flex flex-row gap-0 text-2xl'>
-                            {iconList}
-                        </li>
-                    </ul>
-                </div>
                 <Link to='/' className=" text-xl md:text-2xl font-bold uppercase text-[#224220]">CropDoctor</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
@@ -185,6 +174,19 @@ const Navbar = () => {
             </div>
             <div className="navbar-end lg:flex gap-5 items-center text-2xl hidden ">
                 {iconList}
+            </div>
+            <div className='lg:hidden navbar-end'>
+                <div className="dropdown">
+                    <label tabIndex={0} className="btn btn-ghost ">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </label>
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 border-[1.5px] border-[#224229] ml-[-160px] shadow-md">
+                        {liList}
+                        <li className='nav-item flex flex-row gap-0 text-4xl border-t-[1.5px] border-[#224229] '>
+                            {iconList}
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     );

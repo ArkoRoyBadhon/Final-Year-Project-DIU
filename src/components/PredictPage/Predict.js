@@ -99,6 +99,7 @@ const Predict = () => {
             fetch(`http://127.0.0.1:5000/predict/rice`, config)
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data)
                     setPredictResult(data)
                 })
         }
@@ -106,6 +107,7 @@ const Predict = () => {
             fetch(`http://127.0.0.1:5000/predict/potato`, config)
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data)
                     setPredictResult(data)
                 })
         }
@@ -113,7 +115,7 @@ const Predict = () => {
             fetch(`http://127.0.0.1:5000/predict/tomato`, config)
                 .then(res => res.json())
                 .then(data => {
-
+                    console.log(data)
                     setPredictResult(data)
                 })
         }
@@ -142,7 +144,7 @@ const Predict = () => {
                         </div>
 
                         <form onSubmit={handleSubmit} className=" rounded-lg flex flex-col gap-4 max-w-[600px] mx-auto items-center">
-                            <select className="select select-success w-[300px]" required name='category' onChange={() => setPredictResult(null)}>
+                            <select className="select select-success w-[300px] font-normal" required name='category' onChange={() => setPredictResult(null)}>
                                 {
                                     cropName?.map(crop =>
                                         <option key={crop.name} value={crop.name}>{crop.name}</option>

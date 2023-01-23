@@ -40,7 +40,7 @@ const ViewProduct = () => {
                         <div className='flex flex-col md:flex-row gap-5  md:gap-24 '>
                             <div>
                                 <p className='uppercase text-slate-500 text-lg font-semibold'>PRICE</p>
-                                <h2 className='text-xl font-bold'>${productData.price}</h2>
+                                <h2 className='text-xl font-bold text-green-600'>{productData.price}Tk</h2>
                                 <p className='text-slate-500'>*Free shipping</p>
                             </div>
                             <div>
