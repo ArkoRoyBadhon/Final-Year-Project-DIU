@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import userAvatar from '../../assets/image/user-avatar.png';
 import { AuthContext } from '../../Context/AuthProvider';
-import Loader from '../Shared/Loader'
+import Loader from '../Shared/Loader';
 
 const ManageAdmin = () => {
 
@@ -13,7 +13,7 @@ const ManageAdmin = () => {
     const [reFetch, setReFetch] = useState(false);
     const navigate = useNavigate()
     // useEffect(() => {
-    //     fetch(`http://localhost:5005/userinfo/${user?.email}`)
+    //     fetch(`https://cropdoctor-server.vercel.app/userinfo/${user?.email}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             if (data[0].role !== 'admin') {
@@ -26,7 +26,7 @@ const ManageAdmin = () => {
     // console.log(userInfo);
 
     useEffect(() => {
-        fetch("http://localhost:5005/users")
+        fetch("https://cropdoctor-server.vercel.app/users")
             .then(res => res.json())
             .then(data => setAllUsers(data))
     }, [reFetch])
@@ -34,7 +34,7 @@ const ManageAdmin = () => {
     const manageAdmin = (id, action) => {
         // console.log(id, action)
         const data = { id, action }
-        fetch("http://localhost:5005/manageadmin", {
+        fetch("https://cropdoctor-server.vercel.app/manageadmin", {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

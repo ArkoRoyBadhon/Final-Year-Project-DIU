@@ -162,7 +162,8 @@ const Predict = () => {
                             </aside> */}
 
                             <br />
-                            <button type='submit' className="btn btn-primary bg-[#224229] border-none  px-10 max-w-[300px]">Predict</button>
+                            <p className='text-rose-600'>The predict isn't deploy for live server.*</p>
+                            <button type='submit' className="btn btn-primary bg-[#224229] border-none  px-10 max-w-[300px] " disabled>Predict</button>
                         </form>
                         {/* {
                             <img src={images} alt="nothing" />

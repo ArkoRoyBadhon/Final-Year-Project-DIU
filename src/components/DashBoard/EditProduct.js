@@ -21,7 +21,7 @@ const EditProduct = () => {
     useEffect(() => {
         const id = location.pathname.split('/')[3]
         if (user) {
-            fetch(`http://localhost:5005/editproduct/${id}?email=${user?.email}`)
+            fetch(`https://cropdoctor-server.vercel.app/editproduct/${id}?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.code === true) {
@@ -68,7 +68,7 @@ const EditProduct = () => {
             authorEmail: user?.email
         }
 
-        fetch(`http://localhost:5005/editproduct`, {
+        fetch(`https://cropdoctor-server.vercel.app/editproduct`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

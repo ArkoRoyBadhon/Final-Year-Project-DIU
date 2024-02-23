@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
-import Item from './Item';
 import { AuthContext } from '../../Context/AuthProvider';
 import Loader from '../Shared/Loader';
+import Item from './Item';
 
 const ShopMain = () => {
     const [allItems, setAllItems] = useState(null);
@@ -16,7 +16,7 @@ const ShopMain = () => {
         setAllItems(null)
         setMediBtn(true);
         setMachBtn(false);
-        fetch(`http://localhost:5005/items/Medicine?email=${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/items/Medicine?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setAllItems(data))
             .catch(err => toast.error(err.message))
@@ -25,7 +25,7 @@ const ShopMain = () => {
         setAllItems(null)
         setMediBtn(false);
         setMachBtn(true);
-        fetch(`http://localhost:5005/items/Machinaries?email=${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/items/Machinaries?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setAllItems(data))
             .catch(err => toast.error(err.message))
@@ -34,7 +34,7 @@ const ShopMain = () => {
 
     useEffect(() => {
         if (mediBtn) {
-            fetch(`http://localhost:5005/items/Medicine?email=${user?.email}`)
+            fetch(`https://cropdoctor-server.vercel.app/items/Medicine?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => setAllItems(data))
                 .catch(err => toast.error(err.message))
@@ -43,7 +43,7 @@ const ShopMain = () => {
 
     useEffect(() => {
         if (machBtn) {
-            fetch(`http://localhost:5005/items/Machinaries?email=${user?.email}`)
+            fetch(`https://cropdoctor-server.vercel.app/items/Machinaries?email=${user?.email}`)
                 .then(res => res.json())
                 .then(data => setAllItems(data))
                 .catch(err => toast.error(err.message))
@@ -56,27 +56,32 @@ const ShopMain = () => {
             productId: item.productId,
             email: user?.email
         }
-        fetch('http://localhost:5005/managebookedmarkitems', {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify(insertData)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.code === 'add') {
-                    toast.success(data.status)
-                }
-                else if (data.code === 'remove') {
-                    toast.error(data.status)
-                }
-                else {
-                    toast.error('Something wrong!')
-                }
-                setReFetch(!refetch)
+
+        if (user) {
+            fetch('https://cropdoctor-server.vercel.app/managebookedmarkitems', {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(insertData)
             })
-        console.log(item)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.code === 'add') {
+                        toast.success(data.status)
+                    }
+                    else if (data.code === 'remove') {
+                        toast.error(data.status)
+                    }
+                    else {
+                        toast.error('Something wrong!')
+                    }
+                    setReFetch(!refetch)
+                })
+        }
+        else {
+            toast.error('Please login first.')
+        }
     }
 
     return (

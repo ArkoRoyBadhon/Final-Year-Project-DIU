@@ -13,14 +13,14 @@ const MyOrders = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5005/myorders?email=${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/myorders?email=${user?.email}`)
             .then(res => res.json())
             .then(data => setFetchUsers(data))
             .catch(err => toast.error(err))
     }, [])
 
     const handleDeleteBuyer = async (id, email) => {
-        fetch(`http://localhost:5005/users/${id}`, {
+        fetch(`https://cropdoctor-server.vercel.app/users/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

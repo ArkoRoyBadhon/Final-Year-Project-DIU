@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { BsList } from 'react-icons/bs';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
 import ViewProduct from '../ViewProduct/ViewProduct';
@@ -16,7 +17,6 @@ import MyProductOrders from './MyProductOrders';
 import MyProfile from './MyProfile';
 import ShowProduct from './ShowProduct';
 import ViewEmployee from './ViewEmployee';
-import { BsList } from 'react-icons/bs';
 
 
 const DashBoard = ({ children }) => {
@@ -66,7 +66,7 @@ const DashBoard = ({ children }) => {
             setUrl(nowPath)
         }
 
-        fetch(`http://localhost:5005/userinfo/${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/userinfo/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 // setRefetch(false)

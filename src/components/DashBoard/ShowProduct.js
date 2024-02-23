@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
@@ -17,7 +16,7 @@ const ShowProduct = () => {
     const [type, setType] = useState('Own')
 
     useEffect(() => {
-        fetch(`http://localhost:5005/allitems?email=${user?.email}&category=${searchCategory}&type=${type}`)
+        fetch(`https://cropdoctor-server.vercel.app/allitems?email=${user?.email}&category=${searchCategory}&type=${type}`)
             .then(res => res.json())
             .then(data => setAllItems(data))
     }, [user, searchCategory, type])
