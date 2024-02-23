@@ -41,7 +41,7 @@ const AddEmployee = () => {
                     }
                     // console.log(itemInfo);
 
-                    fetch(`http://localhost:5005/addemployee`, {
+                    fetch(`https://cropdoctor-server.vercel.app/addemployee`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

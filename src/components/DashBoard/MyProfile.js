@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
+import userAvatar from '../../assets/image/user-avatar.png';
 import { AuthContext } from '../../Context/AuthProvider';
 import Loader from '../Shared/Loader';
-import userAvatar from '../../assets/image/user-avatar.png' 
 const MyProfile = () => {
     const { user } = useContext(AuthContext);
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:5005/userinfo/${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/userinfo/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data[0])

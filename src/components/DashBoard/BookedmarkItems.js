@@ -12,7 +12,7 @@ const BookedmarkItems = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:5005/mybookedmark?email=${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/mybookedmark?email=${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -26,7 +26,7 @@ const BookedmarkItems = () => {
             productId: productId,
             email: user?.email
         }
-        fetch('http://localhost:5005/managebookedmarkitems', {
+        fetch('https://cropdoctor-server.vercel.app/managebookedmarkitems', {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

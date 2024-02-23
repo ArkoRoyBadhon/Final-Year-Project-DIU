@@ -11,55 +11,57 @@ const Item = ({ item, handleBookedMark }) => {
     const addToCart = () => {
 
         let add = false;
-        const preData = JSON.parse(localStorage.getItem('cropdoctor-cart'))
-        console.log(preData)
-        if (preData === null) {
-            const proId = []
-            proId.push(productId)
-            const newData = {
-                email: user?.email,
-                productsId: proId
+        console.log(user);
+      
+            const preData = JSON.parse(localStorage.getItem('cropdoctor-cart'))
+            console.log(preData)
+            if (preData === null) {
+                const proId = []
+                proId.push(productId)
+                const newData = {
+                    email: user?.email,
+                    productsId: proId
+                }
+                localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
+                toast.success('Added Successfully!')
             }
-            localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
-            toast.success('Added Successfully!')
-        }
-        else {
-            if (preData.email === user?.email) {
-                let found = 0;
-                preData.productsId.map(id => {
-                    if (id == productId) {
-                        found = 1
+            else {
+                if (preData.email === user?.email) {
+                    let found = 0;
+                    preData.productsId.map(id => {
+                        if (id == productId) {
+                            found = 1
+                        }
+                    })
+                    if (found == 1) {
+                        add = false
+                        toast.error('Already added!')
+
                     }
-                })
-                if (found == 1) {
-                    add = false
-                    toast.error('Already added!')
+                    else {
+                        const productsId = [...preData?.productsId, productId]
+                        const newData = {
+                            email: user?.email,
+                            productsId: productsId
+                        }
+                        localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
+                        add = true
+                        toast.success('Added Successfully!')
+                    }
 
                 }
                 else {
-                    const productsId = [...preData?.productsId, productId]
+                    const productsId = [productId]
                     const newData = {
                         email: user?.email,
                         productsId: productsId
                     }
                     localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
                     add = true
-                    toast.success('Added Successfully!')
                 }
-
             }
-            else {
-                const productsId = [productId]
-                const newData = {
-                    email: user?.email,
-                    productsId: productsId
-                }
-                localStorage.setItem("cropdoctor-cart", JSON.stringify(newData));
-                add = true
-            }
-        }
+        
     }
-
 
     return (
         <div className="bg-base-100 shadow-2xl rounded-xl pb-4">

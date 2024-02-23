@@ -12,14 +12,14 @@ const ViewEmployee = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5005/employees")
+        fetch("https://cropdoctor-server.vercel.app/employees")
             .then(res => res.json())
             .then(data => setFetchUsers(data))
             .catch(err => toast.error(err))
     }, [reFetch])
 
     const handleDelete = async (id) => {
-        fetch(`http://localhost:5005/deleteemployee/${id}`, {
+        fetch(`https://cropdoctor-server.vercel.app/deleteemployee/${id}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

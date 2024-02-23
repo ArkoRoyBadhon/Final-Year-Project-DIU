@@ -20,7 +20,7 @@ const EditEmployee = () => {
         const url = window.location.href;
         const id = url.split('dashboard')[1].split('/')[2]
 
-        fetch(`http://localhost:5005/getemployee/${id}`)
+        fetch(`https://cropdoctor-server.vercel.app/getemployee/${id}`)
             .then(res => res.json())
             .then(data => {
                 // console.log(data);
@@ -45,7 +45,7 @@ const EditEmployee = () => {
         }
         console.log(employeeInfo);
 
-        fetch(`http://localhost:5005/editemployee/${preData._id}`, {
+        fetch(`https://cropdoctor-server.vercel.app/editemployee/${preData._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

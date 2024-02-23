@@ -45,7 +45,7 @@ const AddProduct = () => {
                     }
                     // console.log(itemInfo);
 
-                    fetch(`http://localhost:5005/addItem`, {
+                    fetch(`https://cropdoctor-server.vercel.app/addItem`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

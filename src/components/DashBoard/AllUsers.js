@@ -13,14 +13,14 @@ const AllUsers = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:5005/users")
+        fetch("https://cropdoctor-server.vercel.app/users")
             .then(res => res.json())
             .then(data => setFetchUsers(data))
             .catch(err => toast.error(err))
     }, [])
 
     // const handleDelete = async (id) => {
-    //     fetch(`http://localhost:5005/deleteuser/${id}`, {
+    //     fetch(`https://cropdoctor-server.vercel.app/deleteuser/${id}`, {
     //         method: 'DELETE'
     //     })
     //         .then(res => res.json())

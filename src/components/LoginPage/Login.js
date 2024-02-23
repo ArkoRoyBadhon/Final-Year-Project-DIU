@@ -41,10 +41,10 @@ const Login = () => {
     const handleResetPassword = () => {
         if (forgotEmail) {
             passwordReseting(forgotEmail)
-            .then(()=> {
-                toast.error('password reset link send to your mail')
-            })
-            .catch(err => toast.error(err.message))
+                .then(() => {
+                    toast.error('password reset link send to your mail')
+                })
+                .catch(err => toast.error(err.message))
         } else {
             toast.error('Try to Login First')
         }
@@ -54,13 +54,14 @@ const Login = () => {
     // console.log(forgotEmail);
 
     return (
-        <div style={{backgroundImage: 
-        "url(/images/gom.jpg)"}} className="hero min-h-screen bg-base-200">
-            <div className="hero-content flex-col lg:flex-row">
+        <div style={{
+            background: "linear-gradient(360deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%),url('/images/gom.jpg')"
+        }} className="  h-fit  bg-base-200">
+            <div className=" flex-col lg:flex-row" >
                 {/* <div className="text-center lg:text-left">
                     
                 </div> */}
-                <div className="w-[25rem] rounded-lg flex-shrink-0 max-w-sm shadow-2xl bg-base-100">
+                <div className="w-[95%] mx-auto my-[30px]  max-w-[500px] rounded-lg flex-shrink-0  shadow-2xl bg-base-100 ">
                     <form onSubmit={handleLoginForm} className="card-body">
                         <h2 className="text-2xl">Please Login</h2>
                         <div className="form-control">

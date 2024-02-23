@@ -87,7 +87,7 @@ const Register = () => {
 
     const saveUser = (saveinfo) => {
         console.log('inside saaveUser', saveinfo);
-        fetch(`http://localhost:5005/userinfo/`, {
+        fetch(`https://cropdoctor-server.vercel.app/userinfo/`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -105,14 +105,13 @@ const Register = () => {
 
     return (
         <div style={{
-            backgroundImage:
-                "url(/images/gom.jpg)"
-        }} className="hero min-h-screen bg-base-200">
-            <div className="hero-content">
+            backgroundImage:"linear-gradient(360deg, rgba(0,0,0,0.60) 0%, rgba(0,0,0,0.60) 100%),url('/images/gom.jpg')"
+        }} className=" h-fit bg-no-repeat bg-cover ">
+            <div className="">
                 {/* <div className="text-center lg:text-left">
                     
                 </div> */}
-                <div className="w-[25rem] rounded-xl shadow-2xl bg-base-100">
+                <div className="w-[95%] my-[30px]  max-w-[500px]  mx-auto  rounded-xl shadow-2xl bg-base-100">
                     <form onSubmit={handleSignUpForm} className="card-body">
                         <h2 className="text-2xl">Please Register</h2>
                         <div className="form-control">

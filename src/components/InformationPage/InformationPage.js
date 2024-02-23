@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import ExpertsDetails from './ExpertsDetails'
 const division = [
     { name: "Rangpur" },
     { name: "Rajshahi" },
@@ -132,14 +132,10 @@ const InformationPage = () => {
                     <button disabled className="btn my-8 bg-[#224229] px-6">Search</button>
             }
 
-            {/* {
-                (isActive) ? <ExpertsDetails fetchLink={fetchLink[0].link} upazilaName={upazilaName} districtName={districtName} />
+            {
+                (isActive) && <ExpertsDetails fetchLink={fetchLink[0].link} upazilaName={upazilaName} districtName={districtName} />
                     // (isActive) && console.log(fetchLink[0].link)
-                    :
-                    <div className="h-[30rem] mt-10">
-                        <h2 className="text-black capitalize">Please search for an Area</h2>
-                    </div>
-            } */}
+            }
 
         </div>
     );

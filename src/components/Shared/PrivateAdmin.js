@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
-import Login from '../LoginPage/Login';
 
 const PrivateAdmin = ({ children }) => {
     const { user } = useContext(AuthContext);
     const [userInfo, setUserInfo] = useState(null);
     const navigate = useNavigate()
     useEffect(() => {
-        fetch(`http://localhost:5005/userinfo/${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/userinfo/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data[0])

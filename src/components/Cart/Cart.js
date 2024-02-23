@@ -74,7 +74,7 @@ const Cart = () => {
     useEffect(() => {
         if (localData?.email === user?.email && localData !== null && localData.email !== undefined) {
             const idList = localData.productsId;
-            fetch(`http://localhost:5005/getcartitems`, {
+            fetch(`https://cropdoctor-server.vercel.app/getcartitems`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -120,7 +120,7 @@ const Cart = () => {
             payment: false,
             cartItems, totalPrice, orderPersonEmail: user?.email, orderDate: new Date()
         }
-        fetch(`http://localhost:5005/placeorder`, {
+        fetch(`https://cropdoctor-server.vercel.app/placeorder`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

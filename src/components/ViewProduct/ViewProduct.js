@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Loader from '../Shared/Loader';
-import { Link } from 'react-router-dom';
 // import ratingIcon from '../../asset/rating-icon.png';
-import { AiFillStar } from 'react-icons/ai'
+import { AiFillStar } from 'react-icons/ai';
 
 const ViewProduct = () => {
 
@@ -14,7 +13,7 @@ const ViewProduct = () => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:5005/product/${id}`)
+        fetch(`https://cropdoctor-server.vercel.app/product/${id}`)
             .then(res => res.json())
             .then(data => {
                 setProductData(data)

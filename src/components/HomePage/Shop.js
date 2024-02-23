@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
 const Shop = () => {
 
     const [data, setData] = useState(null);
     useEffect(() => {
-        fetch(`http://localhost:5005/items?len=3`)
+        fetch(`https://cropdoctor-server.vercel.app/items?len=3`)
             .then(res => res.json())
             .then(data => setData(data))
             .catch(err => toast.error(err.message))
@@ -17,7 +16,7 @@ const Shop = () => {
             <div className="w-[92%] max-w-[1440px] mx-auto  ">
                 <div className='text-center '>
                     <h2 className='text-2xl font-bold pt-10 pb-5'>Shop Medicine and Machinaries</h2>
-                    <p className='text-xl max-w-[80%] mx-auto '>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo reiciendis dolore incidunt rerum nulla libero itaque repellendus sequi voluptatum culpa.</p>
+                    <p className='text-xl max-w-[80%] mx-auto '>Shop any products, any where around Bangladesh.</p>
                 </div>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-10 w-[95%] mx-auto mt-5'>
                     {

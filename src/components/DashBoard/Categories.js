@@ -17,7 +17,7 @@ const Categories = ({ handleLink, handleCollapse }) => {
     const activeURL = path.pathname.split('/')[2];
 
     useEffect(() => {
-        fetch(`http://localhost:5005/userinfo/${user?.email}`)
+        fetch(`https://cropdoctor-server.vercel.app/userinfo/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setUserInfo(data[0])

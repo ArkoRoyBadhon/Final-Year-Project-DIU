@@ -1,6 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Result = ({ predictResult }) => {
@@ -121,6 +119,10 @@ const Result = ({ predictResult }) => {
                     "chemical": "Fluopyram 17.7%+ Tebuconazole17.7% w/w SC (400 SC)"
                 }
             ]
+        }, {
+
+            "disaseName": "Tomato healthy",
+            "medicine": []
         }
     ]
     console.log(predictResult);
@@ -136,7 +138,7 @@ const Result = ({ predictResult }) => {
                 setSResult(d)
             }
         })
-    })
+    }, [predictResult])
 
     return (
         <div className='max-w-screen-lg w-[95%] my-10 bg-base-200 mx-auto rounded-lg shadow-2xl mb-10 pb-10'>
@@ -148,7 +150,7 @@ const Result = ({ predictResult }) => {
                 <p className="text-xl font-bold ">Solution Details:</p>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
                     {
-                        sResult && sResult?.medicine?.map((medicine, index) =>
+                        sResult && sResult?.medicine?.length >0 && sResult?.medicine?.map((medicine, index) =>
                             <div key={index} className='p-4 bg-green-200 w-fit rounded-xl text-center shadow-lg max-w-[300px]'>
                                 <img src={medicine.photo} alt="" className='w-64 h-64' />
                                 <h2 className='text-2xl font-bold'>{medicine.name}</h2>
